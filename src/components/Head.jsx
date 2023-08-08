@@ -37,7 +37,7 @@ const Head = () => {
   }, [searchQuery]);
 
   const getSearchSuggestion = async () => {
-    console.log("API CALL", searchQuery);
+    // console.log("API CALL", searchQuery);
     const data = await fetch(YOUTUBE_SEARCH_API + searchQuery);
     const json = await data.json();
     setSuggestions(json[1]);
@@ -72,12 +72,13 @@ const Head = () => {
           <div className="flex items-center ">
             <input
               type="text"
-              className="w-1/2  md:w-[220px] lg:w-[500px] border border-gray-700 p-2 rounded-l-full outline-0 px-5 bg-gray-950 text-white  "
+              className="w-1/2  md:w-[220px] lg:w-[500px] border border-gray-800 p-2 rounded-l-full outline-0 px-5 bg-gray-950 text-white  "
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setShowSuggestions(true)}
+              placeholder="Search"
             />
-            <button className="border border-gray-700 px-5 py-3 rounded-r-full  bg-gray-800 text-white ">
+            <button className="border border-gray-800 px-5 py-3 rounded-r-full  bg-gray-900 text-white ">
               <BsSearch />
             </button>
           </div>

@@ -1,5 +1,4 @@
 const Comment = ({ data }) => {
-  console.log(data);
   const { name, text, replies } = data;
   return (
     <div>

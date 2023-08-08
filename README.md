@@ -123,3 +123,10 @@ UI + DSA + RECURSION
 
 
 -->
+
+<!--
+Live chat
+
+  Web Socket - NO INTERVALS
+  API polling - INTERVALS like: 1ms 3sm
+ -->

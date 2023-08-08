@@ -17,13 +17,13 @@ const Sidebar = () => {
   if (!isMenuOpen) return null;
 
   return (
-    <div className=" col-span-1 w-52 shadow-sm     h-full px-3  bg-black">
+    <div className=" col-span-1 w-52 shadow-sm  h-full px-3  bg-black">
       <aside
-        className="fixed top-0 md:top-20 left-0 z-50 h-screen overflow-y-auto scroll-smooth  bg-black"
+        className="fixed top-0 xl:top-20 left-0 z-50 h-screen overflow-y-auto scroll-smooth  bg-black"
         aria-label="Sidebar"
       >
         <div className="flex flex-col gap-2 md:w-48  w-52">
-          <div className="md:hidden flex col-span-1 items-center px-5 py-4">
+          <div className="xl:hidden flex col-span-1 items-center px-5 py-4">
             <h1
               onClick={() => handleToggle()}
               className="text-2xl cursor-pointer"
@@ -31,7 +31,7 @@ const Sidebar = () => {
               <BiMenu />
             </h1>
 
-            <Link to="/" className="md:w-24 w-20">
+            <Link to="/" className="xl:w-24 w-20">
               <img className="mx-2 " src={logo} alt="logo" />
             </Link>
           </div>

@@ -2,9 +2,11 @@ import { useEffect, useState } from "react";
 import { YOUTUBE_VIDEOS_API } from "./utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const VideoContainer = () => {
   const [videos, setVideos] = useState([]);
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   useEffect(() => {
     getVideos();
@@ -18,7 +20,11 @@ const VideoContainer = () => {
   };
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4   bg-black h-[calc(100%-56px)]">
+    <div
+      className={`grid grid-cols-1  md:grid-cols-2  lg:grid-cols-3 ${
+        isMenuOpen ? "xl:grid-cols-3" : "xl:grid-cols-4"
+      }  bg-black h-[calc(100%-56px)] `}
+    >
       {/* {videos[0] && <AdVideoCard info={videos[0]} />} */}
       {videos?.map((video) => {
         return (
