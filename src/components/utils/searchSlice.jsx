@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const searchSlice = createSlice({
   name: "search",
@@ -6,6 +6,7 @@ const searchSlice = createSlice({
   reducers: {
     cacheResults: (state, action) => {
       state = Object.assign(state, action.payload);
+      console.log(current(state), "CACHE");
     },
   },
 });
