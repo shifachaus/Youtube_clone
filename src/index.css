@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background: 246, 246, 246;
+}
+
+body {
+  color: rgb(246, 246, 246);
+  background-color: rgba(12, 10, 9, 1);
+}
+
 @layer utilities {
   @variants responsive {
     /* Hide scrollbar for Chrome, Safari and Opera */

@@ -5,15 +5,19 @@ const VideoCard = ({ info }) => {
 
   // console.log(info);
   return (
-    <div className="p-2 m-2 flex flex-col gap-2">
+    <div className=" flex flex-col gap-3">
       <img
         src={thumbnails?.medium?.url}
         alt="image"
         className="rounded-lg  w-full object-cover object-center group-hover:opacity-75  "
       />
-      <p className="font-medium text-md">{title}</p>
-      <p className="text-sm text-gray-400">{channelTitle}</p>
-      <p className="text-sm text-gray-400">{statistics?.viewCount} views</p>
+      <p className="font-medium text-md text-neutral-100">{title}</p>
+      <div className="flex flex-col gap-1">
+        <p className="text-sm text-neutral-400">{channelTitle}</p>
+        <p className="text-sm text-neutral-400">
+          {statistics?.viewCount} views
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { toggleMenu } from "./utils/appSlice";
-import { BiMenu } from "react-icons/bi";
 import { BsSearch } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "./utils/constants";
@@ -8,6 +7,8 @@ import { cacheResults } from "./utils/searchSlice";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../assets/yt-logo.png";
+import ButtonList from "./ButtonList";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Head = () => {
   const dispatch = useDispatch();
@@ -52,19 +53,19 @@ const Head = () => {
     // setShowSuggestions(false);
   };
 
-  return (
-    <div className="fixed top-0 inset-x-0 bg-black z-[10] py-2">
-      <div className="container max-w-full mx-auto flex items-center justify-between gap-4 ">
-        <div className="flex col-span-1 items-center ">
-          <h1
-            onClick={() => handleToggle()}
-            className="text-2xl cursor-pointer"
-          >
-            <BiMenu />
-          </h1>
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+  console.log(isMenuOpen);
 
-          <Link to="/" className="md:w-24 w-20">
-            <img className="mx-2 " src={logo} alt="logo" />
+  return (
+    <div className="fixed top-0 inset-x-0  z-[10] py-2 bg-stone-950">
+      <div className="container max-w-full mx-auto flex items-center justify-between gap-4 ">
+        <div className="flex col-span-1 items-center gap-2 md:gap-4">
+          <span onClick={() => handleToggle()}>
+            <RxHamburgerMenu className="text-xl cursor-pointer text-stone-100" />
+          </span>
+
+          <Link to="/">
+            <img className="w-24" src={logo} alt="logo" />
           </Link>
         </div>
 
@@ -72,24 +73,24 @@ const Head = () => {
           <div className="flex items-center ">
             <input
               type="text"
-              className="w-1/2  md:w-[220px] lg:w-[500px] border border-gray-800 p-2 rounded-l-full outline-0 px-5 bg-gray-950 text-white  "
+              className="w-1/2  md:w-[220px] lg:w-[500px]   outline-0  border-l border-t border-b border-stone-800 px-5 py-2 rounded-l-full  bg-stone-950 text-white  "
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setShowSuggestions(true)}
               placeholder="Search"
             />
-            <button className="border border-gray-800 px-5 py-3 rounded-r-full  bg-gray-900 text-white ">
+            <button className="border border-stone-700 px-5 py-3 rounded-r-full  bg-stone-800 text-white ">
               <BsSearch />
             </button>
           </div>
           {showSuggestions && (
-            <div className="fixed bg-gray-950 text-white py-2 px-5 w-[30%] md:w-[220px] lg:w-[500px]  rounded-lg shadow-md border border-gray-900">
+            <div className="fixed  text-white py-2 px-5 w-[30%] md:w-[220px] lg:w-[500px]  rounded-lg shadow-md border bg-stone-950">
               <ul>
                 {suggestions?.map((s) => {
                   return (
                     <Link to={"/result?search_query=" + searchResult} key={s}>
                       <li
-                        className="px-2 py-2 flex gap-2 items-center hover:bg-gray-900 "
+                        className="px-2 py-2 flex gap-2 items-center hover:bg-stone-950 "
                         onClick={(e) => getSearchResults(e)}
                       >
                         <BsSearch /> {s}
@@ -103,8 +104,11 @@ const Head = () => {
         </div>
 
         <div className=" flex items-center max-w-s">
-          <FaRegUserCircle className=" text-lg md:text-2xl" />
+          <FaRegUserCircle className=" text-lg md:text-3xl text-stone-400" />
         </div>
+      </div>
+      <div className={isMenuOpen && `md:ml-60`}>
+        <ButtonList />
       </div>
     </div>
   );

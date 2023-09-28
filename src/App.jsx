@@ -11,7 +11,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <Router>
-        <div className=" flex flex-col h-full bg-black  text-white ">
+        <div className=" flex flex-col h-full ">
           <Head />
           <Routes>
             <Route path="/" element={<Body />}>

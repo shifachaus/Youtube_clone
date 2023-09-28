@@ -1,14 +1,14 @@
 const Button = ({ name, index }) => {
   return (
-    <div>
-      <button
-        className={`px-5 py-2 m-2 ${
-          index === 0 ? "bg-white text-black font-normal " : "bg-gray-900"
-        }  rounded-lg text-sm font-medium`}
-      >
-        {name}
-      </button>
-    </div>
+    <button
+      className={`px-3 py-[.4rem]  ${
+        index === 0
+          ? "bg-white text-black font-normal "
+          : "bg-stone-800 text-neutral-200"
+      }  rounded-lg text-sm font-medium `}
+    >
+      {name}
+    </button>
   );
 };
 

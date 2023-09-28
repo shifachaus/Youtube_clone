@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar";
 
 const Body = () => {
   return (
-    <div className="xl:grid xl:grid-flow-col  bg-black ">
+    <div className="xl:grid xl:grid-flow-col ">
       <Sidebar />
       <Outlet />
     </div>

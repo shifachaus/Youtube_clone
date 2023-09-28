@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import { BiMenu } from "react-icons/bi";
+import { RxHamburgerMenu } from "react-icons/rx";
 import { toggleMenu } from "./utils/appSlice";
 import logo from "../assets/yt-logo.png";
 
@@ -12,47 +12,53 @@ const Sidebar = () => {
   };
 
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-
-  //Early return pattern
-  if (!isMenuOpen) return null;
+  console.log(isMenuOpen);
 
   return (
-    <div className=" col-span-1 w-52 shadow-sm  h-full px-3  bg-black">
+    <section
+      className={`${isMenuOpen && "col-span-1 w-60 shadow-sm  h-full px-3 "} `}
+    >
       <aside
-        className="fixed top-0 xl:top-20 left-0 z-50 h-screen overflow-y-auto scroll-smooth  bg-black"
         aria-label="Sidebar"
+        className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform overflow-y-auto no-scrollbar bg-stone-950  ${
+          isMenuOpen ? "translate-x-0 " : "-translate-x-full"
+        } `}
       >
-        <div className="flex flex-col gap-2 md:w-48  w-52">
-          <div className="xl:hidden flex col-span-1 items-center px-5 py-4">
-            <h1
-              onClick={() => handleToggle()}
-              className="text-2xl cursor-pointer"
-            >
-              <BiMenu />
-            </h1>
+        <div className="flex flex-col gap-2 py-1   px-2">
+          <div className="flex gap-2 md:gap-4 col-span-1 items-center px-5 py-4">
+            <span onClick={() => handleToggle()}>
+              <RxHamburgerMenu className="text-xl cursor-pointer text-stone-100" />
+            </span>
 
-            <Link to="/" className="xl:w-24 w-20">
-              <img className="mx-2 " src={logo} alt="logo" />
+            <Link to="/">
+              <img className="w-24 " src={logo} alt="logo" />
             </Link>
           </div>
-          <ul className="border-b border-slate-300 px-5 py-2">
+
+          <ul className="border-b flex flex-col gap-4 border-stone-700 px-5 py-2">
             <Link to="/">
               <li>Home</li>
             </Link>
             <li>Shorts</li>
-            <li>Subscriptions</li>
+            <li className="mb-4">Subscriptions</li>
           </ul>
 
-          <ul className="border-b border-slate-300 px-5 py-2">
+          <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">
             <li>Library</li>
             <li>History</li>
             <li>Your Videos</li>
-            <li>Watch Later</li>
+            <li className="mb-4">Watch Later</li>
           </ul>
-          <h3 className="border-b border-slate-300 px-5 py-2 font-medium text-md mb-2">
-            Subscriptions
-          </h3>
-          <ul className=" px-5 py-2">
+
+          <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">
+            <h3 className="font-medium text-md mb-2">Subscriptions</h3>
+            <li>Library</li>
+            <li>History</li>
+            <li>Your Videos</li>
+            <li className="mb-4">Watch Later</li>
+          </ul>
+
+          <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">
             <h3 className="font-medium text-md mb-2">Explore</h3>
             <li>Trending</li>
             <li>Shopping</li>
@@ -62,11 +68,24 @@ const Sidebar = () => {
             <li>Gaming</li>
             <li>News</li>
             <li>Learning</li>
-            <li>Fashion & beauty</li>
+            <li className="mb-4">Fashion & beauty</li>
           </ul>
+
+          <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">
+            <li>Settings</li>
+            <li>Report history</li>
+            <li>Help</li>
+            <li>Send Feedback</li>
+          </ul>
+
+          <p className="text-sm text-neutral-500 px-5 py-2">
+            Lorem Ipsum is a type of placeholder text used in the printing and
+            typesetting industry. It's often used as a temporary filler text
+            when the actual content is not available.
+          </p>
         </div>
       </aside>
-    </div>
+    </section>
   );
 };
 

@@ -1,5 +1,3 @@
-import React from "react";
-
 const SearchResults = ({ result }) => {
   console.log(result, "kk");
   return (

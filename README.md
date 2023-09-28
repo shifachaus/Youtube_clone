@@ -1,5 +1,23 @@
 # Youtube clone
 
+<!-- ## HOOKS
+
+1. useState()
+2. useEffect()
+
+3. useMemo()
+
+   - increase the performance of the app
+   - lets you cache the result of a calculation between re-renders
+   - expensive operation
+
+   ```
+
+   ```
+
+4.
+5. -->
+
 <!-- 1. setup tailwind
 
    - npm install -D tailwindcss
@@ -131,21 +149,5 @@ Live chat
   API polling - INTERVALS like: 1ms 3sm
 
 
-  ## HOOKS
 
-1. useState()
-2. useEffect()
-
-3. useMemo()
-
-   - increase the performance of the app
-   - lets you cache the result of a calculation between re-renders
-   - expensive operation
-
-   ```
-
-   ```
-
-4.
-5.
  -->

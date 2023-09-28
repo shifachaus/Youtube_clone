@@ -3,7 +3,7 @@ import Button from "./Button";
 const list = ["All", "Gaming", "Songs", "Live", "Sports", "News", "Cooking"];
 const ButtonList = () => {
   return (
-    <div className="flex pt-14  items-center md:pt-10 ">
+    <div className="container flex gap-3 pt-4  items-center ">
       {list.map((item, index) => (
         <Button key={index} name={item} index={index} />
       ))}

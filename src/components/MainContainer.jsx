@@ -1,10 +1,8 @@
 import VideoContainer from "./VideoContainer";
-import ButtonList from "./ButtonList";
 
 const MainContainer = () => {
   return (
-    <div className=" col-span-11 h-screen overflow-y-auto scroll-smooth p-2 sm:p-6">
-      <ButtonList />
+    <div className="col-span-11 h-screen overflow-y-auto scroll-smooth no-scrollbar p-[1.6rem] mt-28">
       <VideoContainer />
     </div>
   );
