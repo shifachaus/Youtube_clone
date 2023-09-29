@@ -7,7 +7,6 @@ import { cacheResults } from "./utils/searchSlice";
 import { FaRegUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import logo from "../assets/yt-logo.png";
-import ButtonList from "./ButtonList";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 const Head = () => {
@@ -53,15 +52,15 @@ const Head = () => {
     // setShowSuggestions(false);
   };
 
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  console.log(isMenuOpen);
-
   return (
-    <div className="fixed top-0 inset-x-0  z-[10] py-2 bg-stone-950">
+    <div className="fixed top-0 inset-x-0  z-[10] py-2 bg-zinc-950">
       <div className="container max-w-full mx-auto flex items-center justify-between gap-4 ">
-        <div className="flex col-span-1 items-center gap-2 md:gap-4">
-          <span onClick={() => handleToggle()}>
-            <RxHamburgerMenu className="text-xl cursor-pointer text-stone-100" />
+        <div className="flex col-span-1 items-center gap-2 md:gap-4 ">
+          <span
+            onClick={() => handleToggle()}
+            className="hover:bg-stone-900 rounded-full p-2"
+          >
+            <RxHamburgerMenu className="text-2xl cursor-pointer text-stone-100" />
           </span>
 
           <Link to="/">
@@ -73,13 +72,13 @@ const Head = () => {
           <div className="flex items-center ">
             <input
               type="text"
-              className="w-1/2  md:w-[220px] lg:w-[500px]   outline-0  border-l border-t border-b border-stone-800 px-5 py-2 rounded-l-full  bg-stone-950 text-white  "
+              className="w-1/2  md:w-[220px] lg:w-[500px]   outline-0  border-l border-t border-b border-zinc-800 px-5 py-2 rounded-l-full  bg-zinc-950 text-white  "
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onFocus={() => setShowSuggestions(true)}
               placeholder="Search"
             />
-            <button className="border border-stone-700 px-5 py-3 rounded-r-full  bg-stone-800 text-white ">
+            <button className="border border-zinc-800 px-5 py-3 rounded-r-full  bg-zinc-900 text-white ">
               <BsSearch />
             </button>
           </div>
@@ -90,7 +89,7 @@ const Head = () => {
                   return (
                     <Link to={"/result?search_query=" + searchResult} key={s}>
                       <li
-                        className="px-2 py-2 flex gap-2 items-center hover:bg-stone-950 "
+                        className="px-2 py-2 flex gap-2 items-center hover:bg-zinc-950 "
                         onClick={(e) => getSearchResults(e)}
                       >
                         <BsSearch /> {s}
@@ -104,11 +103,8 @@ const Head = () => {
         </div>
 
         <div className=" flex items-center max-w-s">
-          <FaRegUserCircle className=" text-lg md:text-3xl text-stone-400" />
+          <FaRegUserCircle className=" text-2xl  md:text-3xl text-stone-500" />
         </div>
-      </div>
-      <div className={isMenuOpen && `md:ml-60`}>
-        <ButtonList />
       </div>
     </div>
   );

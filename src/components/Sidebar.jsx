@@ -25,9 +25,12 @@ const Sidebar = () => {
         } `}
       >
         <div className="flex flex-col gap-2 py-1   px-2">
-          <div className="flex gap-2 md:gap-4 col-span-1 items-center px-5 py-4">
-            <span onClick={() => handleToggle()}>
-              <RxHamburgerMenu className="text-xl cursor-pointer text-stone-100" />
+          <div className="flex gap-2 md:gap-4 col-span-1 items-center px-2 py-1">
+            <span
+              onClick={() => handleToggle()}
+              className="hover:bg-stone-900 rounded-full p-2"
+            >
+              <RxHamburgerMenu className="text-2xl cursor-pointer text-stone-100" />
             </span>
 
             <Link to="/">

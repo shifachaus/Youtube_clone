@@ -24,8 +24,7 @@ const SearchResultContainer = () => {
   };
 
   return (
-    <div className="py-16 px-5   w-[90%] max-w-5xl my-0 mx-auto mt-6 mb-6 ">
-      <h3 className="text-lg text-white mb-4">Search Results</h3>
+    <div className="container mx-auto col-span-11 h-screen overflow-y-auto scroll-smooth no-scrollbar p-[1.6rem] mt-28  max-w-6xl mx-auto">
       {results?.map((result) => (
         <SearchResults result={result} key={result?.id} />
       ))}

@@ -5,7 +5,7 @@ const VideoCard = ({ info }) => {
 
   // console.log(info);
   return (
-    <div className=" flex flex-col gap-3">
+    <div className=" flex flex-col gap-3 mb-6">
       <img
         src={thumbnails?.medium?.url}
         alt="image"
@@ -21,13 +21,5 @@ const VideoCard = ({ info }) => {
     </div>
   );
 };
-
-// export const AdVideoCard = ({ info }) => {
-//   return (
-//     <div className="border border-red-700">
-//       <VideoCard info={info} />
-//     </div>
-//   );
-// };
 
 export default VideoCard;

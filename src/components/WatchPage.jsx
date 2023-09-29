@@ -6,11 +6,9 @@ import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_VIDEO_API } from "./utils/constants";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
+import Sidebar from "./Sidebar";
 
 const WatchPage = () => {
-  //   const params = useParams();
-  //   console.log(params);
-
   const [searchParams] = useSearchParams();
   const [video, setVideo] = useState([]);
 
@@ -27,48 +25,49 @@ const WatchPage = () => {
     // console.log(data.items);
   };
 
-  // console.log(video[0]?.snippet?.title);
-
   return (
-    <div className="py-16 px-5 flex flex-col gap-2  w-[90%] max-w-7xlxl my-0 mx-auto mt-6 mb-6 ">
-      <div className="lg:grid lg:grid-flow-col">
-        <div className="mb-6 lg:mb-4">
-          <iframe
-            className="w-full h-60 md:h-[500px] lg:w-[600px] lg:h-[500px]  xl:w-[840px] mb-4"
-            src={"https://www.youtube.com/embed/" + searchParams.get("v")}
-            title="YouTube video player"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowFullScreen
-          ></iframe>
+    <section>
+      <Sidebar />
+      <div className=" flex flex-col gap-2 container mt-24 mb-6 mx-auto">
+        <div className="lg:grid lg:grid-flow-col">
+          <div className="mb-6 lg:mb-4">
+            <iframe
+              className="w-full h-60 sm:h-80 md:h-[400px] lg:w-[600px] lg:h-[450px]  xl:w-[840px] mb-4 rounded-lg"
+              src={"https://www.youtube.com/embed/" + searchParams.get("v")}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            ></iframe>
 
-          <div className="flex flex-col gap-2">
-            <h2 className="text-md md:xl font-medium">
-              {video[0]?.snippet?.title}
-            </h2>
+            <div className="flex flex-col gap-2">
+              <h2 className="text-lg md:xl font-medium">
+                {video[0]?.snippet?.title}
+              </h2>
 
-            <p className="text-sm font-medium">
-              {video[0]?.snippet?.channelTitle}
-            </p>
-            <p className="text-sm text-gray-400">
-              {video[0]?.statistics?.likeCount}Like
-            </p>
+              <p className="text-sm font-medium">
+                {video[0]?.snippet?.channelTitle}
+              </p>
+              <div className="flex flex-col gap-1">
+                <p className="text-sm text-neutral-400">
+                  {video[0]?.statistics?.likeCount}Like
+                </p>
 
-            <p className="text-sm text-gray-400">
-              {video[0]?.statistics?.viewCount}View
-            </p>
+                <p className="text-sm text-neutral-400">
+                  {video[0]?.statistics?.viewCount}View
+                </p>
+              </div>
+            </div>
           </div>
+
+          <div className="col-span-11">{/* <LiveChat /> */}</div>
         </div>
 
-        <div className="col-span-11">
-          <LiveChat />
+        <div className="w-full lg:w-[600px] l  xl:w-[840px]  ">
+          <CommentsContainer />
         </div>
       </div>
-
-      <div className="md:w-[740px] lg:w-[900px] ">
-        <CommentsContainer />
-      </div>
-    </div>
+    </section>
   );
 };
 

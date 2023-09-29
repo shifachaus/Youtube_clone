@@ -9,7 +9,7 @@
 
 body {
   color: rgb(246, 246, 246);
-  background-color: rgba(12, 10, 9, 1);
+  background-color: rgba(9, 9, 11, 1);
 }
 
 @layer utilities {
