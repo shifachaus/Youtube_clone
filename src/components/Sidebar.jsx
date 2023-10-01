@@ -49,16 +49,13 @@ const Sidebar = () => {
           <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">
             <li>Library</li>
             <li>History</li>
-            <li>Your Videos</li>
-            <li className="mb-4">Watch Later</li>
+            {/* <li>Your Videos</li>
+            <li className="mb-4">Watch Later</li> */}
           </ul>
 
           <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">
-            <h3 className="font-medium text-md mb-2">Subscriptions</h3>
-            <li>Library</li>
-            <li>History</li>
-            <li>Your Videos</li>
-            <li className="mb-4">Watch Later</li>
+            <li>Sign in to like videos, comment, and subscribe.</li>
+            <li>Sign in</li>
           </ul>
 
           <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">
@@ -66,12 +63,19 @@ const Sidebar = () => {
             <li>Trending</li>
             <li>Shopping</li>
             <li>Music</li>
-            <li>Films</li>
+            <li>Movies</li>
             <li>Live</li>
             <li>Gaming</li>
             <li>News</li>
             <li>Learning</li>
             <li className="mb-4">Fashion & beauty</li>
+          </ul>
+
+          <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">
+            <h3 className="font-medium text-md mb-2">More from YouTube</h3>
+            <li>YouTube Premium</li>
+            <li>YouTube Music</li>
+            <li>YouTube Kids</li>
           </ul>
 
           <ul className="border-b border-stone-700 flex flex-col gap-4 px-5 py-2">

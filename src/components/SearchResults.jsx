@@ -1,5 +1,5 @@
 const SearchResults = ({ result }) => {
-  console.log(result, "kk");
+  // console.log(result, "kk");
   return (
     <div className="md:flex  grid grid-cols-2  gap-4 mb-2 ">
       <div className="mb-4 md:mb-2 md:w-4/12 ">

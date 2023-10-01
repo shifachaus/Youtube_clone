@@ -11,7 +11,7 @@ const MainContainer = () => {
       <div
         className={`${
           isMenuOpen && "md:ml-60"
-        } fixed top-[3.1rem] inset-x-0  z-[10]  bg-zinc-950`}
+        } fixed top-[3.1rem] inset-x-0  bg-zinc-950`}
       >
         <ButtonList />
       </div>
