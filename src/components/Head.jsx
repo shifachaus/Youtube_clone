@@ -87,7 +87,7 @@ const Head = () => {
               <div className="hidden sm:block">
                 <div className="flex items-center ">
                   <input
-                    className="w-11/2 sm:w-[200px] md:w-[550px] outline-0  border border-t border-b  border-neutral-700 px-5 py-[.4rem] rounded-l-full  bg-stone-950 text-neutral-100 placeholder:text-neutral-500 placeholder:font-medium"
+                    className="w-11/2 sm:w-[200px] md:w-[300px] lg:w-[550px] outline-0  border border-t border-b  border-neutral-700 px-5 py-[.4rem] rounded-l-full  bg-stone-950 text-neutral-100 placeholder:text-neutral-500 placeholder:font-medium"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onFocus={() => setShowSuggestions(true)}
