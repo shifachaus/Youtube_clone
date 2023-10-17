@@ -20,6 +20,7 @@ import { IoBagHandleOutline } from "react-icons/io5";
 import { BsNewspaper } from "react-icons/bs";
 import { AiOutlineBulb, AiOutlineFire } from "react-icons/ai";
 import { PiCoatHanger } from "react-icons/pi";
+import LoginButton from "./LoginButton";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -81,18 +82,11 @@ const Sidebar = () => {
             </li>
           </ul>
 
-          <ul className="border-b border-neutral-600 flex flex-col items-start gap-4 px-5 py-2 ">
-            <li className="text-md">
-              Sign in to like videos, comment, and subscribe.
+          <ul className="border-b border-neutral-600 flex flex-col  px-5 py-2 ">
+            <li className="text-md mb-2 flex flex-col items-start gap-4 ">
+              <p>Sign in to like videos, comment, and subscribe.</p>
+              <LoginButton />
             </li>
-            <div className="flex gap-2 justify-center items-center  border border-neutral-700 py-[0.4rem] px-[0.8rem] hover:border-sky-950 hover:bg-sky-950   rounded-full cursor-pointer mb-2">
-              <span>
-                <FaRegUserCircle className="text-sky-500  text-xl " />
-              </span>
-              <p className="text-sky-500 font-medium text-md tracking-tighter">
-                Sign in
-              </p>
-            </div>
           </ul>
 
           <ul className="border-b border-neutral-600 flex flex-col  py-2">

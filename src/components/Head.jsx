@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import logo from "../assets/yt-logo.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
+import LoginButton from "./LoginButton";
 
 const Head = () => {
   const dispatch = useDispatch();
@@ -120,14 +121,8 @@ const Head = () => {
                 )}
               </div>
             </div>
-            <div className="flex gap-2 items-center  border border-neutral-700 py-[0.4rem] px-[0.8rem]  hover:bg-sky-950 hover:border-sky-950   rounded-full cursor-pointer">
-              <span>
-                <FaRegUserCircle className="text-sky-500  text-xl " />
-              </span>
-              <p className="text-sky-500 font-medium text-md tracking-tighter">
-                Sign in
-              </p>
-            </div>
+
+            <LoginButton />
           </div>
         </div>
 
