@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import home from "../assets/home.png";
-import shorts from "../assets/short.png";
-
+import shorts from "../assets/shorts.png";
 import subscription from "../assets/subscriptions.png";
 import library from "../assets/library.png";
 import { useSelector } from "react-redux";
