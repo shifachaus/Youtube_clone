@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { YOUTUBE_VIDEOS_API } from "./utils/constants";
+import { YOUTUBE_VIDEOS_API } from "../utils/constants";
 import VideoCard from "./VideoCard";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";

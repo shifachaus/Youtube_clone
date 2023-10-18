@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { YOUTUBE_SEARCH_RESULT_API } from "./utils/constants";
+import { YOUTUBE_SEARCH_RESULT_API } from "../utils/constants";
 import SearchResults from "./SearchResults";
-import { fetchFromAPI } from "./utils/fetchFromApi";
+import { fetchFromAPI } from "../utils/fetchFromApi";
 
 const SearchResultContainer = () => {
   const [searchParams] = useSearchParams();

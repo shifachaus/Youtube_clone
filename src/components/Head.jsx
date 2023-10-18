@@ -1,24 +1,26 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "./utils/appSlice";
+import { toggleMenu } from "../utils/appSlice";
 import { GoSearch } from "react-icons/go";
 import { useEffect, useState } from "react";
-import { YOUTUBE_SEARCH_API } from "./utils/constants";
-import { cacheResults } from "./utils/searchSlice";
-import { FaRegUserCircle } from "react-icons/fa";
+import { YOUTUBE_SEARCH_API } from "../utils/constants";
+import { cacheResults } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
 import logo from "../assets/yt-logo.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
 import LoginButton from "./LoginButton";
+import UserAvatar from "./UserAvatar";
+import { useUserContext } from "../context/user_context";
 
 const Head = () => {
   const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search);
+  const { myUser } = useUserContext();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [searchResult, setSearchResult] = useState("");
+  const [setSearchResult] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   const handleToggle = () => {
@@ -63,7 +65,7 @@ const Head = () => {
             showSearchBar ? "hidden" : "gap-4 grid grid-flow-col"
           }  `}
         >
-          <div className="flex col-span-4 items-center gap-2 md:gap-4 ">
+          <div className="flex col-span-4 items-center gap-4 md:px-2">
             <span
               onClick={() => handleToggle()}
               className="hover:bg-stone-900 rounded-full p-2"
@@ -122,7 +124,7 @@ const Head = () => {
               </div>
             </div>
 
-            <LoginButton />
+            {!myUser ? <LoginButton /> : <UserAvatar />}
           </div>
         </div>
 

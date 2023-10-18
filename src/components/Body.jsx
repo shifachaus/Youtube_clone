@@ -1,12 +1,15 @@
 import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
+import MenuBar from "./MenuBar";
 
 const Body = () => {
   return (
     <div className="xl:grid xl:grid-flow-col ">
-      <Sidebar />
-
-      <Outlet />
+      <section className="grid grid-flow-col">
+        <Sidebar />
+        <MenuBar />
+        <Outlet />
+      </section>
     </div>
   );
 };

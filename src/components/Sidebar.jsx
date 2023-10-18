@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { toggleMenu } from "./utils/appSlice";
+import { toggleMenu } from "../utils/appSlice";
 import logo from "../assets/yt-logo.png";
 import home from "../assets/home.png";
 import shorts from "../assets/short.png";
@@ -21,39 +21,41 @@ import { BsNewspaper } from "react-icons/bs";
 import { AiOutlineBulb, AiOutlineFire } from "react-icons/ai";
 import { PiCoatHanger } from "react-icons/pi";
 import LoginButton from "./LoginButton";
+import { useUserContext } from "../context/user_context";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
+  const { myUser } = useUserContext();
 
   const handleToggle = () => {
     dispatch(toggleMenu());
   };
 
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  console.log(isMenuOpen);
 
   return (
-    <section className={`${isMenuOpen && "col-span-1 w-60 h-full px-3   "} `}>
+    <section
+      className={`${isMenuOpen ? "col-span-1 w-60 h-full px-3   " : "hidden"} `}
+    >
       <aside
         aria-label="Sidebar"
-        className={`fixed top-0 left-0 z-40 w-64 h-screen transition-transform overflow-y-auto no-scrollbar bg-stone-950  ${
+        className={`fixed top-0 left-0 z-40 w-64 transition-transform overflow-x-hidden  bg-stone-950  ${
           isMenuOpen ? "translate-x-0 " : "-translate-x-full"
         } `}
       >
-        <div className="flex flex-col gap-2 py-1   px-2">
-          <div className="flex gap-2 md:gap-4 col-span-1 items-center px-2 py-1">
-            <span
-              onClick={() => handleToggle()}
-              className="hover:bg-stone-900 rounded-full p-2"
-            >
-              <RxHamburgerMenu className="text-xl cursor-pointer text-stone-100" />
-            </span>
+        <div className="flex gap-4  col-span-1 items-center px-6 py-2">
+          <span
+            onClick={() => handleToggle()}
+            className="hover:bg-stone-900 rounded-full p-2"
+          >
+            <RxHamburgerMenu className="text-xl cursor-pointer text-stone-100" />
+          </span>
 
-            <Link to="/">
-              <img className="w-24 " src={logo} alt="logo" />
-            </Link>
-          </div>
-
+          <Link to="/">
+            <img className="w-24 " src={logo} alt="logo" />
+          </Link>
+        </div>
+        <div className="flex flex-col gap-2 py-1   px-2 h-screen  overflow-y-auto overflow-x-hidden">
           <ul className="border-b flex flex-col border-neutral-600  py-2">
             <Link to="/">
               <li className="grid grid-flow-col gap-6 hover:bg-neutral-700 px-5 py-2 rounded-md bg-zinc-800">
@@ -82,12 +84,14 @@ const Sidebar = () => {
             </li>
           </ul>
 
-          <ul className="border-b border-neutral-600 flex flex-col  px-5 py-2 ">
-            <li className="text-md mb-2 flex flex-col items-start gap-4 ">
-              <p>Sign in to like videos, comment, and subscribe.</p>
-              <LoginButton />
-            </li>
-          </ul>
+          {!myUser && (
+            <ul className="border-b border-neutral-600 flex flex-col  px-5 py-2 ">
+              <li className="text-md mb-2 flex flex-col items-start gap-4 ">
+                <p>Sign in to like videos, comment, and subscribe.</p>
+                <LoginButton />
+              </li>
+            </ul>
+          )}
 
           <ul className="border-b border-neutral-600 flex flex-col  py-2">
             <h3 className="font-medium text-md mb-2 px-5 ">Explore</h3>

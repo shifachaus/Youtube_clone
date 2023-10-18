@@ -2,7 +2,7 @@
 
 :root {
   --primary: rgba(9, 9, 11, 1);
-  --secondary: rgb(207, 206, 206);
+  --secondary: rgb(194, 194, 194);
 }
 
 * {
@@ -47,8 +47,8 @@ body {
 
     /* Hide scrollbar for IE, Edge and Firefox */
     .no-scrollbar {
-      -ms-overflow-style: none; /* IE and Edge */
-      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;
+      scrollbar-width: none;
     }
   }
 }

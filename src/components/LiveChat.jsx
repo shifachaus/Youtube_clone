@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import ChatMessage from "./ChatMessage";
 import { useDispatch, useSelector } from "react-redux";
-import { addMessage } from "./utils/ChatSlice";
-import { generateRandomName, makeRandomMessage } from "./utils/helper";
+import { addMessage } from "../utils/ChatSlice";
+import { generateRandomName, makeRandomMessage } from "../utils/helper";
 import { BiSolidUserCircle } from "react-icons/bi";
 
 const LiveChat = () => {
