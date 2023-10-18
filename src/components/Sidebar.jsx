@@ -5,7 +5,6 @@ import { toggleMenu } from "../utils/appSlice";
 import logo from "../assets/yt-logo.png";
 import home from "../assets/home.png";
 import shorts from "../assets/short.png";
-import { FaRegUserCircle } from "react-icons/fa";
 import subscription from "../assets/subscriptions.png";
 import library from "../assets/library.png";
 import history from "../assets/history.png";
