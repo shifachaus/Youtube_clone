@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import home from "../assets/home.png";
-import shorts from "../assets/shorts.png";
-import subscription from "../assets/subscriptions.png";
-import library from "../assets/library.png";
+import home from "../../public/home.png";
+import shorts from "../../public/shorts.png";
+import subscription from "../../public/subscriptions.png";
+import library from "../../public/library.png";
 import { useSelector } from "react-redux";
 
 const MenuBar = () => {
