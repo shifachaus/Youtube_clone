@@ -29,8 +29,8 @@ const SearchResultContainer = () => {
 
   return (
     <div className="container mx-auto col-span-11 h-screen overflow-y-auto scroll-smooth no-scrollbar p-[1.6rem] mt-28  max-w-6xl">
-      {results?.map((result) => (
-        <SearchResults result={result} key={result?.id} />
+      {results?.map((result, i) => (
+        <SearchResults result={result} key={i} />
       ))}
     </div>
   );

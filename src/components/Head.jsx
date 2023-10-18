@@ -20,7 +20,7 @@ const Head = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [setSearchResult] = useState("");
+  const [searchResult, setSearchResult] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
 
   const handleToggle = () => {
