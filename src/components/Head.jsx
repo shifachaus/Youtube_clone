@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
-import logo from "../assets/yt-logo.png";
+import logo from "../../public/yt-logo.png";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
 import LoginButton from "./LoginButton";
