@@ -1,9 +1,10 @@
+import { formatNumber } from "../utils/constants";
+
 const VideoCard = ({ info }) => {
   // console.log(info);
   const { snippet, statistics } = info;
   const { channelTitle, title, thumbnails } = snippet;
 
-  // console.log(info);
   return (
     <div className=" flex flex-col gap-3 mb-6">
       <img
@@ -15,7 +16,7 @@ const VideoCard = ({ info }) => {
       <div className="flex flex-col gap-1">
         <p className="text-sm text-neutral-400">{channelTitle}</p>
         <p className="text-sm text-neutral-400">
-          {statistics?.viewCount} views
+          {formatNumber(+statistics?.viewCount)} views
         </p>
       </div>
     </div>
