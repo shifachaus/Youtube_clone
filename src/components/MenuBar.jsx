@@ -12,10 +12,10 @@ const MenuBar = () => {
   return (
     <section
       className={`hidden   ${
-        isMenuOpen ? "hidden" : "md:grid col-span-1 mt-12 z-10"
+        isMenuOpen ? "hidden" : "md:grid col-span-1 mt-12 z-10 fixed"
       } `}
     >
-      <aside aria-label="Sidebar">
+      <aside aria-label="Sidebar" className="fixed w-30 ">
         <div className="p-2">
           <ul className="flex flex-col gap-3 py-2">
             <Link to="/">

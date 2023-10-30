@@ -23,7 +23,7 @@ const list = [
 ];
 const ButtonList = () => {
   return (
-    <div className="container max-w-7xl mx-auto overflow-scroll no-scrollbar pt-4  flex items-center">
+    <div className="container max-w-7xl mx-auto overflow-scroll no-scrollbar pt-4  flex items-center ">
       {list.map((item, index) => (
         <Button key={index} name={item} index={index} />
       ))}

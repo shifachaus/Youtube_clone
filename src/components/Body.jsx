@@ -5,7 +5,7 @@ import MenuBar from "./MenuBar";
 const Body = () => {
   return (
     <div className="xl:grid xl:grid-flow-col ">
-      <section className="grid grid-flow-col">
+      <section className="grid grid-flow-col ">
         <Sidebar />
         <MenuBar />
         <Outlet />

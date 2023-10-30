@@ -1,4 +1,24 @@
-# Youtube clone
+# [yt-doppelgange (YouTube Clone)](https://yt-doppelgange.netlify.app/)🚀
+
+yt-doppelgange is a web application built using React.js for the frontend and styled with Tailwind CSS. This project emulates the core functionality of YouTube, allowing users to browse and watch videos.
+
+## Key Features:
+
+- Users can browse a list of videos on the homepage.
+- They can also search for videos using a search bar.
+- Users can click on a video to play it.
+- Live Chat Feature
+- Nested Comment Feature
+- User authentication and authorization using Auth0
+
+## Tech Stack
+
+- **Frontend**: React, Redux Toolkit, React Router, TailwindCSS
+- **User Authentication**: Auth0
+
+## Live Project
+
+Catch the excitement live on [yt-doppelgange (YouTube Clone)](https://yt-doppelgange.netlify.app/)
 
 <!-- ## HOOKS
 

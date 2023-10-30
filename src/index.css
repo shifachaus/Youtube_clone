@@ -2,7 +2,7 @@
 
 :root {
   --primary: rgba(9, 9, 11, 1);
-  --secondary: rgb(194, 194, 194);
+  --secondary: rgb(110, 110, 110);
 }
 
 * {
@@ -11,7 +11,7 @@
 }
 
 *::-webkit-scrollbar {
-  width: 15px;
+  width: 16px;
 }
 
 *::-webkit-scrollbar-track {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 // import { useParams } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
@@ -22,13 +22,19 @@ const WatchPage = () => {
     const response = await fetch(YOUTUBE_VIDEO_API + searchParams.get("v"));
     const data = await response.json();
     setVideo(data?.items);
-    // console.log(data.items);
+    console.log(data.items);
   };
+
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
 
   return (
     <section>
       <Sidebar />
-      <div className=" flex flex-col gap-2 container mt-24 mb-6 mx-auto">
+      <div
+        className={`${
+          !isMenuOpen && "md:ml-24"
+        } flex flex-col gap-2 container mt-24 mb-6 mx-auto`}
+      >
         <div className="lg:grid lg:grid-flow-col">
           <div className="mb-6 lg:mb-4">
             <iframe

@@ -3,12 +3,11 @@ import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_SEARCH_RESULT_API } from "../utils/constants";
 import SearchResults from "./SearchResults";
 import { fetchFromAPI } from "../utils/fetchFromApi";
+import { useSelector } from "react-redux";
 
 const SearchResultContainer = () => {
   const [searchParams] = useSearchParams();
   const [results, setResult] = useState([]);
-
-  console.log(searchParams.get("search_query"), "jjj");
 
   useEffect(() => {
     fetchFromAPI(
@@ -27,8 +26,14 @@ const SearchResultContainer = () => {
     // setResult(data?.items);
   };
 
+  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
+
   return (
-    <div className="container mx-auto col-span-11 h-screen overflow-y-auto scroll-smooth no-scrollbar p-[1.6rem] mt-28  max-w-6xl">
+    <div
+      className={`${
+        !isMenuOpen && "md:m-20"
+      } container mx-auto col-span-11 h-screen overflow-y-auto scroll-smooth no-scrollbar p-[1.6rem] mt-28  max-w-6xl`}
+    >
       {results?.map((result, i) => (
         <SearchResults result={result} key={i} />
       ))}

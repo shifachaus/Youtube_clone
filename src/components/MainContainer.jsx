@@ -7,9 +7,9 @@ const MainContainer = () => {
   console.log(isMenuOpen);
 
   return (
-    <section>
+    <section className={!isMenuOpen && "md:ml-20"}>
       <div className="col-span-11 ">
-        <div className="fixed top-[3.1rem]   bg-zinc-950">
+        <div className="fixed top-[3.1rem]   bg-zinc-950 ">
           <ButtonList />
         </div>
 
