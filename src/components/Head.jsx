@@ -78,7 +78,7 @@ const Head = () => {
             </Link>
           </div>
 
-          <div className="col-span-8 flex items-center gap-6 justify-end sm:justify-between max-w-s">
+          <div className="col-span-7 flex items-center gap-6 justify-end sm:justify-between max-w-s">
             <div className="flex items-center justify-between gap-6">
               <span
                 className="sm:hidden hover:bg-stone-900 rounded-full p-2 "
