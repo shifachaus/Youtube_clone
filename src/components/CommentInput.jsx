@@ -10,9 +10,10 @@ const CommentInput = ({ cancelReply, index, comments, comment }) => {
       text: commnetReply,
       replies: [],
     });
+
+    cancelReply(index);
   };
 
-  console.log(comment);
   return (
     <div className="flex  flex-col gap-2 pl-5 ml-5 overflow-hidden ">
       <div className="flex items-center gap-2 ">
