@@ -39,7 +39,7 @@ const WatchPage = () => {
 
   useLayoutEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth > 940 && window.innerWidth < 1080); // Adjust the screen size threshold as needed
+      setIsSmallScreen(window.innerWidth > 440 && window.innerWidth < 1080); // Adjust the screen size threshold as needed
     };
 
     // Initial check and event listener
@@ -56,11 +56,11 @@ const WatchPage = () => {
     <section className="">
       <Sidebar />
       <div className="mx-auto container">
-        <div className={`flex flex-col gap-2 container mt-24 mb-6   lg:ml-10 `}>
+        <div className={`flex flex-col gap-1 container mt-24 mb-6   lg:ml-10 `}>
           <div className="lg:grid lg:grid-flow-col  lg:gap-10">
             <div className="mb-6 lg:mb-4 col-span-6 lg:w-[600px]  ">
               <iframe
-                className="w-full  lg:w-[600px] xl:w-[830px] h-60 sm:h-80 md:h-[300px] lg:h-[370px] mb-4 rounded-lg"
+                className="w-full mb-6  lg:w-[600px] xl:w-[830px] h-60 sm:h-80 md:h-[300px] lg:h-[370px] rounded-lg"
                 src={"https://www.youtube.com/embed/" + searchParams.get("v")}
                 title="YouTube video player"
                 frameBorder="0"
@@ -68,6 +68,9 @@ const WatchPage = () => {
                 allowFullScreen
               ></iframe>
 
+              <div className=" lg:hidden mb-6 ">
+                <LiveChat />
+              </div>
               <div className="flex flex-col gap-4 w-full lg:w-[600px] xl:w-[830px] ">
                 <h2 className="text-md md:text-lg md:xl font-medium text-neutral-200">
                   {video[0]?.snippet?.title}
@@ -112,7 +115,7 @@ const WatchPage = () => {
                       </button>
                     </div>
 
-                    <button className=" flex items-center   px-3 py-2 rounded-full bg-zinc-800 text-neutral-200  font-medium text-sm hover:bg-neutral-700 ">
+                    <button className=" flex items-center  gap-2    px-3 py-2 rounded-full bg-zinc-800 text-neutral-200  font-medium text-sm hover:bg-neutral-700 ">
                       <PiShareFatThin className="text-xl hover:bg-neutral-700" />
                       share
                     </button>
@@ -160,7 +163,7 @@ const WatchPage = () => {
               </div>
             </div>
 
-            <div className="col-span-6 ">
+            <div className="hidden lg:block col-span-6 ">
               <LiveChat />
             </div>
           </div>
