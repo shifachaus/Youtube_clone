@@ -6,7 +6,6 @@ import { generateRandomName, makeRandomMessage } from "../utils/helper";
 
 import Chat from "./Chat";
 import LiveChatLoginButton from "./LiveChatLoginButton";
-import UserAvatar from "./UserAvatar";
 
 const LiveChat = () => {
   const messages = useSelector((store) => store.chat.messages);
@@ -61,11 +60,10 @@ const LiveChat = () => {
 
           <div
             className="border-t border-neutral-700 w-full h-28"
-            // onMouseEnter={handleMouseEnter}
-            // onMouseLeave={handleMouseLeave}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
-            {/* <LiveChatLoginButton /> <Chat /> */}
-            <Chat />
+            {isHovered ? <LiveChatLoginButton /> : <Chat />}
           </div>
 
           <div className="border-t border-neutral-700 p-1">
