@@ -6,8 +6,11 @@ import { generateRandomName, makeRandomMessage } from "../utils/helper";
 
 import Chat from "./Chat";
 import LiveChatLoginButton from "./LiveChatLoginButton";
+import { useUserContext } from "../context/user_context";
 
 const LiveChat = () => {
+  const { myUser } = useUserContext();
+
   const messages = useSelector((store) => store.chat.messages);
 
   const dispatch = useDispatch();
@@ -63,7 +66,7 @@ const LiveChat = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            {isHovered ? <LiveChatLoginButton /> : <Chat />}
+            {myUser ? <Chat /> : isHovered ? <LiveChatLoginButton /> : <Chat />}
           </div>
 
           <div className="border-t border-neutral-700 p-1">
