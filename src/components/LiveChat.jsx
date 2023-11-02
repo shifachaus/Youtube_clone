@@ -29,7 +29,7 @@ const LiveChat = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const [showChat, setShowChat] = useState(false);
+  const [showChat, setShowChat] = useState(true);
 
   const [isHovered, setIsHovered] = useState(false);
 
