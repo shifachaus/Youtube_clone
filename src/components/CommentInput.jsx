@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { BiSolidUserCircle } from "react-icons/bi";
-import UserAvatar from "./UserAvatar";
+import { useUserContext } from "../context/user_context";
 
 const CommentInput = ({ cancelReply, index, comments, comment }) => {
   const [commnetReply, setCommentReply] = useState("");
+  const { myUser } = useUserContext();
 
   const addReplyToComment = () => {
-    comment.replies.push({
-      name: "User",
+    comment?.replies?.push({
+      name: myUser?.nickname || myUser?.given_name,
       text: commnetReply,
       replies: [],
     });

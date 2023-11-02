@@ -1,6 +1,7 @@
 import { useState } from "react";
 import CommentsList from "./CommentsList";
 import { BiSolidUserCircle } from "react-icons/bi";
+import { useUserContext } from "../context/user_context";
 
 const commentsData = [
   {
@@ -104,6 +105,8 @@ const commentsData = [
 ];
 
 const CommentsContainer = () => {
+  const { myUser, loginWithRedirect } = useUserContext();
+
   const [addComment, setAddComments] = useState("");
   const [comments, setComments] = useState(commentsData);
   const [show, setShow] = useState(false);
@@ -111,25 +114,39 @@ const CommentsContainer = () => {
   const setAComment = () => {
     setComments((prevComments) => [
       {
-        name: "User",
+        name: myUser?.nickname || myUser?.given_name,
         text: addComment,
         replies: [],
       },
       ...prevComments,
     ]);
+
+    setShow(false);
+  };
+
+  const gotoLoginPage = () => {
+    if (!myUser) {
+      loginWithRedirect();
+    }
   };
 
   return (
     <div className="mt-4">
       <h1 className="text-lg font-medium text-neutral-300 mb-4">
-        {" "}
         {comments?.length} Comments
       </h1>
 
       <div className="flex flex-col gap-2 mb-6">
         <div className="flex items-center gap-2">
-          <BiSolidUserCircle className="text-4xl" />
-
+          {!myUser ? (
+            <BiSolidUserCircle className="text-4xl" />
+          ) : (
+            <img
+              className="w-8 h-8 rounded-full"
+              src={myUser?.picture}
+              alt="avatar"
+            />
+          )}
           <input
             className="text-sm pb-1 font-medium placeholder:text-neutral-400 px-2 w-full border-b border-stone-600 bg-zinc-950"
             placeholder="Add a comment..."
@@ -138,6 +155,7 @@ const CommentsContainer = () => {
             onChange={(e) => {
               setAddComments(e.target.value), setShow(true);
             }}
+            onClick={() => gotoLoginPage()}
           />
         </div>
 
