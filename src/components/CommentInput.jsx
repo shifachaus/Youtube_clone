@@ -1,19 +1,28 @@
 import { useState } from "react";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { useUserContext } from "../context/user_context";
+import { useDispatch } from "react-redux";
+import { addReplyToComment, cancelReply } from "../utils/commentSlice";
 
-const CommentInput = ({ cancelReply, index, comments, comment }) => {
+const CommentInput = ({ index, comments, comment }) => {
   const [commnetReply, setCommentReply] = useState("");
   const { myUser } = useUserContext();
 
-  const addReplyToComment = () => {
-    comment?.replies?.push({
-      name: myUser?.nickname || myUser?.given_name,
-      text: commnetReply,
-      replies: [],
-    });
+  const dispatch = useDispatch();
 
-    cancelReply(index);
+  const replyToComment = () => {
+    dispatch(
+      addReplyToComment({
+        index,
+        reply: {
+          name: myUser?.nickname || myUser?.given_name,
+          text: commnetReply,
+          replies: [],
+        },
+      })
+    );
+
+    dispatch(cancelReply(index));
   };
 
   return (
@@ -31,7 +40,7 @@ const CommentInput = ({ cancelReply, index, comments, comment }) => {
       </div>
       <div className="flex flex-end justify-end gap-2">
         <button
-          onClick={() => cancelReply(index)}
+          onClick={() => dispatch(cancelReply(index))}
           className="text-neutral-200 font-medium flex items-center gap-2 hover:bg-neutral-700  rounded-full px-3 py-2 text-sm"
         >
           Cancel
@@ -44,7 +53,7 @@ const CommentInput = ({ cancelReply, index, comments, comment }) => {
               ? `text-black font-medium flex items-center gap-2 bg-sky-500   rounded-full px-3 py-2`
               : "text-white  flex items-center gap-2 bg-neutral-600  opacity-50  rounded-full px-3 py-2"
           }
-          onClick={() => addReplyToComment()}
+          onClick={() => replyToComment()}
         >
           Reply
         </button>

@@ -62,3 +62,104 @@ export function formatDateAsRelative(dateString) {
 const dateStr = "2023-10-28T16:30:03Z";
 const formattedDate = formatDateAsRelative(dateStr);
 console.log(formattedDate);
+
+export const commentsData = [
+  {
+    name: "John Doe",
+    text: "This is a new comment from John Doe.",
+    replies: [
+      {
+        name: "Alice Smith",
+        text: "Reply from Alice Smith to John Doe.",
+        replies: [],
+      },
+      {
+        name: "Bob Johnson",
+        text: "Reply from Bob Johnson to John Doe.",
+        replies: [],
+      },
+    ],
+  },
+  {
+    name: "Alice Smith",
+    text: "Another comment from Alice Smith.",
+    replies: [
+      {
+        name: "Charlie Brown",
+        text: "Reply from Charlie Brown to Alice Smith.",
+        replies: [],
+      },
+      {
+        name: "David Wilson",
+        text: "Reply from David Wilson to Alice Smith.",
+        replies: [
+          {
+            name: "Emily Taylor",
+            text: "Reply from Emily Taylor to David Wilson.",
+            replies: [
+              {
+                name: "Frank Davis",
+                text: "Reply from Frank Davis to Emily Taylor.",
+                replies: [
+                  {
+                    name: "Grace Harris",
+                    text: "Reply from Grace Harris to Frank Davis.",
+                    replies: [],
+                  },
+                ],
+              },
+              {
+                name: "Helen Clark",
+                text: "Reply from Helen Clark to Emily Taylor.",
+                replies: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
+    name: "Bob Johnson",
+    text: "New comment from Bob Johnson.",
+    replies: [
+      {
+        name: "Isabel Lee",
+        text: "Reply from Isabel Lee to Bob Johnson.",
+        replies: [],
+      },
+    ],
+  },
+  {
+    name: "David Wilson",
+    text: "A comment from David Wilson.",
+    replies: [
+      {
+        name: "John Doe",
+        text: "Reply from John Doe to David Wilson.",
+        replies: [],
+      },
+    ],
+  },
+  {
+    name: "Ella White",
+    text: "Ella White's comment.",
+    replies: [
+      {
+        name: "Frank Davis",
+        text: "Reply from Frank Davis to Ella White.",
+        replies: [],
+      },
+      {
+        name: "Grace Harris",
+        text: "Reply from Grace Harris to Ella White.",
+        replies: [],
+      },
+      {
+        name: "Helen Clark",
+        text: "Reply from Helen Clark to Ella White.",
+        replies: [],
+      },
+    ],
+  },
+];
