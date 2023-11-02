@@ -13,6 +13,7 @@ import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { PiShareFatThin } from "react-icons/pi";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { RxDotsHorizontal } from "react-icons/rx";
+import UserAvatar from "./UserAvatar";
 
 const WatchPage = () => {
   const [searchParams] = useSearchParams();

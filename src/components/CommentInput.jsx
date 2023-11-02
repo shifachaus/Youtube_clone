@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { BiSolidUserCircle } from "react-icons/bi";
+import UserAvatar from "./UserAvatar";
 
 const CommentInput = ({ cancelReply, index, comments, comment }) => {
   const [commnetReply, setCommentReply] = useState("");
@@ -18,6 +19,7 @@ const CommentInput = ({ cancelReply, index, comments, comment }) => {
     <div className="flex  flex-col gap-2 pl-5 ml-5 overflow-hidden ">
       <div className="flex items-center gap-2 ">
         <BiSolidUserCircle className="text-2xl" />
+
         <input
           className=" text-sm pb-1 placeholder:text-neutral-400 px-2 w-full border-b border-stone-600 bg-zinc-950"
           placeholder="Add a reply..."

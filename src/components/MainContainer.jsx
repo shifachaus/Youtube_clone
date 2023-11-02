@@ -7,7 +7,7 @@ const MainContainer = () => {
   console.log(isMenuOpen);
 
   return (
-    <section className={!isMenuOpen && "md:ml-20"}>
+    <section className={!isMenuOpen ? "md:ml-20" : undefined}>
       <div className="col-span-11 ">
         <div className="fixed top-[3.1rem]   bg-zinc-950 ">
           <ButtonList />
