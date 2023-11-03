@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import CommentsList from "./CommentsList";
+
 import { BiSolidUserCircle } from "react-icons/bi";
 import { useUserContext } from "../context/user_context";
 import { commentsData } from "../utils/constants";
@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { addComment } from "../utils/commentSlice";
 import NestedComments from "./NestedComments";
 import ThemeContext from "../context/theme_context";
+import { v4 as uuidv4 } from "uuid";
 
 const CommentsContainer = () => {
   const { isDarkTheme } = useContext(ThemeContext);
@@ -20,6 +21,7 @@ const CommentsContainer = () => {
   const setAComment = () => {
     dispatch(
       addComment({
+        id: uuidv4(),
         name: myUser?.nickname || myUser?.given_name,
         text: commentInput,
         replies: [],

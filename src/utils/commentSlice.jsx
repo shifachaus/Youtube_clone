@@ -6,7 +6,7 @@ const commentSlice = createSlice({
   initialState: {
     commentsData,
     showReplies: Array(commentsData.length).fill(false),
-    addReplies: Array(commentsData.length).fill(false),
+    addReplies: {},
   },
   reducers: {
     addComment: (state, action) => {
@@ -33,7 +33,6 @@ const commentSlice = createSlice({
       const { index, reply } = action.payload;
       const comment = state.commentsData[index];
 
-      console.log(current(state.commentsData), comment, "comment reply");
       if (comment) {
         comment.replies.push(reply);
       }

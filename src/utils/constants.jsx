@@ -1,3 +1,5 @@
+import { v4 as uuidv4 } from "uuid";
+
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
 export const LIVE_CHAT_COUNT = 20;
@@ -65,15 +67,18 @@ console.log(formattedDate);
 
 export const commentsData = [
   {
+    id: uuidv4(),
     name: "John Doe",
     text: "This is a new comment from John Doe.",
     replies: [
       {
+        id: uuidv4(),
         name: "Alice Smith",
         text: "Reply from Alice Smith to John Doe.",
         replies: [],
       },
       {
+        id: uuidv4(),
         name: "Bob Johnson",
         text: "Reply from Bob Johnson to John Doe.",
         replies: [],
@@ -81,27 +86,33 @@ export const commentsData = [
     ],
   },
   {
+    id: uuidv4(),
     name: "Alice Smith",
     text: "Another comment from Alice Smith.",
     replies: [
       {
+        id: uuidv4(),
         name: "Charlie Brown",
         text: "Reply from Charlie Brown to Alice Smith.",
         replies: [],
       },
       {
+        id: uuidv4(),
         name: "David Wilson",
         text: "Reply from David Wilson to Alice Smith.",
         replies: [
           {
+            id: uuidv4(),
             name: "Emily Taylor",
             text: "Reply from Emily Taylor to David Wilson.",
             replies: [
               {
+                id: uuidv4(),
                 name: "Frank Davis",
                 text: "Reply from Frank Davis to Emily Taylor.",
                 replies: [
                   {
+                    id: uuidv4(),
                     name: "Grace Harris",
                     text: "Reply from Grace Harris to Frank Davis.",
                     replies: [],
@@ -109,6 +120,7 @@ export const commentsData = [
                 ],
               },
               {
+                id: uuidv4(),
                 name: "Helen Clark",
                 text: "Reply from Helen Clark to Emily Taylor.",
                 replies: [],
@@ -120,10 +132,12 @@ export const commentsData = [
     ],
   },
   {
+    id: uuidv4(),
     name: "Bob Johnson",
     text: "New comment from Bob Johnson.",
     replies: [
       {
+        id: uuidv4(),
         name: "Isabel Lee",
         text: "Reply from Isabel Lee to Bob Johnson.",
         replies: [],
@@ -131,10 +145,12 @@ export const commentsData = [
     ],
   },
   {
+    id: uuidv4(),
     name: "David Wilson",
     text: "A comment from David Wilson.",
     replies: [
       {
+        id: uuidv4(),
         name: "John Doe",
         text: "Reply from John Doe to David Wilson.",
         replies: [],
@@ -142,20 +158,24 @@ export const commentsData = [
     ],
   },
   {
+    id: uuidv4(),
     name: "Ella White",
     text: "Ella White's comment.",
     replies: [
       {
+        id: uuidv4(),
         name: "Frank Davis",
         text: "Reply from Frank Davis to Ella White.",
         replies: [],
       },
       {
+        id: uuidv4(),
         name: "Grace Harris",
         text: "Reply from Grace Harris to Ella White.",
         replies: [],
       },
       {
+        id: uuidv4(),
         name: "Helen Clark",
         text: "Reply from Helen Clark to Ella White.",
         replies: [],

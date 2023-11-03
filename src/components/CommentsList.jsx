@@ -11,6 +11,7 @@ const CommentsList = ({ comments }) => {
   const { isDarkTheme } = useContext(ThemeContext);
   const showReplies = useSelector((store) => store.comment.showReplies);
   const addReplies = useSelector((store) => store.comment.addReplies);
+  console.log(addReplies, "JJJ");
 
   const dispatch = useDispatch();
 
@@ -43,7 +44,7 @@ const CommentsList = ({ comments }) => {
               <AiOutlineDislike className="text-xl " />
             </button>
             <button
-              onClick={() => dispatch(toggleAddComment(index))}
+              onClick={() => dispatch(toggleAddComment(comment.id))}
               className={` ${
                 isDarkTheme
                   ? " text-neutral-900 hover:bg-neutral-200"
@@ -54,8 +55,8 @@ const CommentsList = ({ comments }) => {
             </button>
           </div>
 
-          {addReplies[index] && (
-            <CommentInput index={index} comment={comment} />
+          {addReplies[comment.id] && (
+            <CommentInput id={comment.id} comment={comment} />
           )}
 
           {comment.replies.length > 0 && (

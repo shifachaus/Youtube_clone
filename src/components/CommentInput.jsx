@@ -4,8 +4,9 @@ import { useUserContext } from "../context/user_context";
 import { useDispatch } from "react-redux";
 import { addReplyToComment, cancelReply } from "../utils/commentSlice";
 import ThemeContext from "../context/theme_context";
+import { v4 as uuidv4 } from "uuid";
 
-const CommentInput = ({ index, comments, comment }) => {
+const CommentInput = ({ id, comments, comment }) => {
   const { isDarkTheme } = useContext(ThemeContext);
   const [commnetReply, setCommentReply] = useState("");
   const { myUser } = useUserContext();
@@ -15,7 +16,7 @@ const CommentInput = ({ index, comments, comment }) => {
   const replyToComment = () => {
     dispatch(
       addReplyToComment({
-        index,
+        id: uuidv4(),
         reply: {
           name: myUser?.nickname || myUser?.given_name,
           text: commnetReply,
@@ -24,7 +25,7 @@ const CommentInput = ({ index, comments, comment }) => {
       })
     );
 
-    dispatch(cancelReply(index));
+    dispatch(cancelReply(id));
   };
 
   return (
@@ -46,7 +47,7 @@ const CommentInput = ({ index, comments, comment }) => {
       </div>
       <div className="flex flex-end justify-end gap-2">
         <button
-          onClick={() => dispatch(cancelReply(index))}
+          onClick={() => dispatch(cancelReply(id))}
           className={` font-medium flex items-center gap-2 ${
             !isDarkTheme
               ? "text-neutral-200 hover:bg-neutral-700"
