@@ -4,8 +4,12 @@ import shorts from "../../public/shorts.png";
 import subscription from "../../public/subscriptions.png";
 import library from "../../public/library.png";
 import { useSelector } from "react-redux";
+import { useContext } from "react";
+import ThemeContext from "../context/theme_context";
 
 const MenuBar = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
   console.log(isMenuOpen);
 
@@ -19,20 +23,38 @@ const MenuBar = () => {
         <div className="p-2">
           <ul className="flex flex-col gap-3 py-2">
             <Link to="/">
-              <li className="flex flex-col items-center gap-2  hover:bg-zinc-800  py-2 rounded-md ">
+              <li
+                className={`flex flex-col items-center gap-2   ${
+                  !isDarkTheme
+                    ? " hover:bg-zinc-800 "
+                    : " hover:bg-neutral-200 "
+                }  py-2 rounded-md `}
+              >
                 <img src={home} alt="home" className="w-6" />
                 <p className="text-[11px]   "> Home</p>
               </li>
             </Link>
-            <li className="flex flex-col items-center gap-2  py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`flex flex-col items-center gap-2   ${
+                !isDarkTheme ? " hover:bg-zinc-800 " : " hover:bg-neutral-200 "
+              }  py-2 rounded-md `}
+            >
               <img src={shorts} alt="Shorts" className="w-6" />
               <p className="text-[11px] "> Shorts</p>
             </li>
-            <li className="flex flex-col items-center gap-2    py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`flex flex-col items-center gap-2   ${
+                !isDarkTheme ? " hover:bg-zinc-800 " : " hover:bg-neutral-200 "
+              }  py-2 rounded-md `}
+            >
               <img src={subscription} alt="Subscriptions" className="w-6" />
               <p className="text-[11px] "> Subscriptions</p>
             </li>
-            <li className="flex flex-col items-center gap-2   py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`flex flex-col items-center gap-2   ${
+                !isDarkTheme ? " hover:bg-zinc-800 " : " hover:bg-neutral-200 "
+              }  py-2 rounded-md `}
+            >
               <img src={library} alt="Library" className="w-6" />
               <p className="text-[11px] ">Library</p>
             </li>

@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import ThemeContext from "../context/theme_context";
 import Button from "./Button";
 
 const list = [
@@ -22,8 +24,14 @@ const list = [
   "Recently uploaded",
 ];
 const ButtonList = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
+
   return (
-    <div className="container max-w-7xl mx-auto overflow-scroll no-scrollbar pt-4  flex items-center ">
+    <div
+      className={`container max-w-7xl mx-auto overflow-scroll no-scrollbar p-4  flex items-center  ${
+        isDarkTheme ? "bg-white" : "bg-zinc-950 "
+      }`}
+    >
       {list.map((item, index) => (
         <Button key={index} name={item} index={index} />
       ))}

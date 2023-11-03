@@ -21,8 +21,11 @@ import { AiOutlineBulb, AiOutlineFire } from "react-icons/ai";
 import { PiCoatHanger } from "react-icons/pi";
 import LoginButton from "./LoginButton";
 import { useUserContext } from "../context/user_context";
+import { useContext } from "react";
+import ThemeContext from "../context/theme_context";
 
 const Sidebar = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const { myUser } = useUserContext();
 
@@ -38,46 +41,96 @@ const Sidebar = () => {
     >
       <aside
         aria-label="Sidebar"
-        className={`fixed top-0 left-0 z-40 w-60 transition-transform overflow-x-hidden  bg-stone-950  ${
-          isMenuOpen ? "translate-x-0 " : "-translate-x-full"
-        } `}
+        className={`fixed top-0 left-0 z-40 w-60 transition-transform overflow-x-hidden    ${
+          !isDarkTheme
+            ? "bg-stone-950 text-neutral-200"
+            : "bg-white text-neutral-800 "
+        }  ${isMenuOpen ? "translate-x-0 " : "-translate-x-full"} `}
       >
         <div className="flex gap-4  col-span-1 items-center px-6 py-2">
           <span
             onClick={() => handleToggle()}
-            className="hover:bg-stone-900 rounded-full p-2"
+            className={`${
+              !isDarkTheme ? "hover:bg-stone-900" : "hover:bg-neutral-200 "
+            }   rounded-full p-2`}
           >
-            <RxHamburgerMenu className="text-xl cursor-pointer text-stone-100" />
+            <RxHamburgerMenu className="text-xl cursor-pointer " />
           </span>
 
           <Link to="/">
             <img className="w-24 " src={logo} alt="logo" />
           </Link>
         </div>
-        <div className="flex flex-col gap-2 py-1   px-2 hover:h-screen  overflow-y-auto overflow-x-hidden">
-          <ul className="border-b flex flex-col border-neutral-600  py-2">
+        <div
+          className="flex flex-col gap-2 py-1   px-2 hover:h-screen  overflow-y-auto overflow-x-hidden"
+          style={{
+            "--primary": isDarkTheme ? "#fff" : "rgba(9, 9, 11, 1)",
+            "--secondary": isDarkTheme
+              ? "rgb(166, 166, 166)"
+              : "rgb(110, 110, 110)",
+          }}
+        >
+          <ul
+            className={`border-b flex flex-col   py-2     ${
+              !isDarkTheme ? "border-neutral-600 " : "border-neutral-601  "
+            } `}
+          >
             <Link to="/">
-              <li className="grid grid-flow-col gap-6 hover:bg-neutral-700 px-5 py-2 rounded-md bg-zinc-800">
-                <img src={home} alt="logo" className="col-span-2" />
+              <li
+                className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                  !isDarkTheme
+                    ? "bg-zinc-800 hover:bg-neutral-700 "
+                    : "bg-neutral-100 hover:bg-neutral-200 "
+                }`}
+              >
+                <img src={home} alt="logo" className="col-span-2 " />
                 <p className="font-medium text-[.9rem] col-span-10"> Home</p>
               </li>
             </Link>
-            <li className="grid grid-flow-col gap-6  px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={shorts} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Shorts</p>
             </li>
-            <li className="grid grid-flow-col gap-6 mb-4  px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={subscription} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Subscriptions</p>
             </li>
           </ul>
 
-          <ul className="border-b border-neutral-600 flex flex-col  py-2">
-            <li className="grid grid-flow-col gap-6  px-5 py-2 rounded-md hover:bg-zinc-800">
+          <ul
+            className={`border-b flex flex-col   py-2     ${
+              !isDarkTheme ? "border-neutral-600 " : "border-neutral-601  "
+            } `}
+          >
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={library} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem]    col-span-10">Library</p>
             </li>
-            <li className="grid grid-flow-col gap-6  px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={history} alt="logo" className="col-span-2" />
               <p className="text-[.9rem]   col-span-10">History</p>
             </li>
@@ -92,41 +145,99 @@ const Sidebar = () => {
             </ul>
           )}
 
-          <ul className="border-b border-neutral-600 flex flex-col  py-2">
+          <ul
+            className={`border-b flex flex-col   py-2     ${
+              !isDarkTheme ? "border-neutral-600 " : "border-neutral-601  "
+            } `}
+          >
             <h3 className="font-medium text-md mb-2 px-5 ">Explore</h3>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <AiOutlineFire className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Trending</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <IoBagHandleOutline className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Shopping</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={music} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Music</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={movie} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Movies</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={live} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Live</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={game} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Gaming</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <BsNewspaper className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> News</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <AiOutlineBulb className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Learning</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <PiCoatHanger className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Fashion & beauty</p>
             </li>
@@ -135,31 +246,71 @@ const Sidebar = () => {
           <ul className="border-b border-neutral-600 flex flex-col  py-2">
             <h3 className="font-medium text-md mb-2 px-5">More from YouTube</h3>
 
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={unknown} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> YouTube Premium</p>
             </li>
 
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={unknown} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> YouTube Music</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={unknown} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> YouTube Kids</p>
             </li>
           </ul>
 
-          <ul className="border-b border-neutral-600 flex flex-col  py-2">
-            <li className="grid grid-flow-col gap-6  px-5 py-2 rounded-md hover:bg-zinc-800">
+          <ul
+            className={`border-b flex flex-col   py-2     ${
+              !isDarkTheme ? "border-neutral-600 " : "border-neutral-601  "
+            } `}
+          >
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={settings} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Settings</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={report} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Report history</p>
             </li>
-            <li className="grid grid-flow-col gap-6   px-5 py-2 rounded-md hover:bg-zinc-800">
+            <li
+              className={`grid grid-flow-col gap-6  px-5 py-2 rounded-md   ${
+                !isDarkTheme
+                  ? " hover:bg-neutral-700 "
+                  : " hover:bg-neutral-200 "
+              }`}
+            >
               <img src={unknown} alt="logo" className="col-span-2" />
               <p className=" text-[.9rem] col-span-10"> Help</p>
             </li>
