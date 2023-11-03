@@ -34,8 +34,6 @@ const WatchPage = () => {
     console.log(data.items);
   };
 
-  const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-
   const [expanded, setExpanded] = useState(false);
 
   const [isSmallScreen, setIsSmallScreen] = useState(false);

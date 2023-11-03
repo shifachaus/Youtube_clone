@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { VscSend } from "react-icons/vsc";
 import { addMessage } from "../utils/chatSlice";
 import { useDispatch } from "react-redux";
 import { useUserContext } from "../context/user_context";
+import ThemeContext from "../context/theme_context";
 
 const Chat = () => {
+  const { isDarkTheme } = useContext(ThemeContext);
   const { myUser } = useUserContext();
   const [liveMessage, setLiveMessage] = useState("");
 
@@ -33,14 +35,22 @@ const Chat = () => {
               alt="avatar"
             />
           )}
-          <p className="text-sm text-neutral-200 font-medium">
+          <p
+            className={`text-sm ${
+              isDarkTheme ? "text-neutral-500" : "text-neutral-200"
+            }  font-medium`}
+          >
             {myUser?.nickname || myUser?.given_name}
           </p>
         </div>
 
         <div className="flex items-end flex-col ml-8 gap-2">
           <input
-            className="text-sm font-medium text-neutral-200 placeholder:text-neutral-200 px-2 w-full bg-black border-b border-neutral-400"
+            className={`text-sm font-medium  px-2 w-full bg-black border-b border-neutral-400 ${
+              !isDarkTheme
+                ? "bg-zinc-950 border-neutral-600 text-neutral-200 placeholder:text-neutral-200"
+                : "bg-white border-neutral-300 text-neutral-700 placeholder:text-neutral-500"
+            }`}
             placeholder="Chat..."
             type="text"
             value={liveMessage}
@@ -56,7 +66,9 @@ const Chat = () => {
                   ? "text-[.8rem] text-orange-500"
                   : liveMessage.length > 200
                   ? "text-[.8rem] text-red-600"
-                  : "text-[.8rem] text-neutral-400"
+                  : `text-[.8rem] ${
+                      isDarkTheme ? "text-neutral-500" : "text-neutral-400"
+                    } `
               }
             >
               {liveMessage.length}/200
@@ -69,8 +81,12 @@ const Chat = () => {
               <VscSend
                 className={
                   liveMessage.length > 0 && liveMessage.length <= 200
-                    ? "text-2xl text-neutral-400"
-                    : `text-2xl text-neutral-600 `
+                    ? `text-2xl ${
+                        isDarkTheme ? "text-neutral-600" : "text-neutral-300"
+                      }`
+                    : `text-2xl ${
+                        isDarkTheme ? "text-neutral-400" : "text-neutral-500"
+                      }`
                 }
               />
             </button>
