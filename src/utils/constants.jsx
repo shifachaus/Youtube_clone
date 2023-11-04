@@ -1,4 +1,29 @@
 import { v4 as uuidv4 } from "uuid";
+import {
+  IoBagHandleOutline,
+  IoSettingsOutline,
+  IoHelpCircleOutline,
+} from "react-icons/io5";
+import { BsNewspaper } from "react-icons/bs";
+import { AiOutlineBulb, AiOutlineFire, AiFillYoutube } from "react-icons/ai";
+import { PiCoatHanger } from "react-icons/pi";
+
+import { GoHomeFill } from "react-icons/go";
+import {
+  MdOutlineSubscriptions,
+  MdOutlineVideoLibrary,
+  MdOutlineLiveTv,
+} from "react-icons/md";
+import { VscHistory } from "react-icons/vsc";
+import {
+  PiMusicNoteThin,
+  PiFilmSlate,
+  PiGameControllerThin,
+  PiFlagThin,
+} from "react-icons/pi";
+import { TbBrandYoutubeKids } from "react-icons/tb";
+import { SiYoutubemusic } from "react-icons/si";
+import { CiYoutube } from "react-icons/ci";
 
 const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
@@ -181,5 +206,120 @@ export const commentsData = [
         replies: [],
       },
     ],
+  },
+];
+
+export const tab1 = [
+  {
+    icon: <GoHomeFill className="col-span-2 text-xl" />,
+    name: "Home",
+    color: true,
+  },
+  {
+    icon: <CiYoutube className="col-span-2 text-xl" />,
+    name: "Shorts",
+    color: false,
+  },
+  {
+    icon: <MdOutlineSubscriptions className="col-span-2 text-xl" />,
+    name: "Subscriptions",
+    color: false,
+  },
+];
+
+export const tab2 = [
+  {
+    icon: <MdOutlineVideoLibrary className="col-span-2 text-xl" />,
+    name: "Library",
+    color: false,
+  },
+  {
+    icon: <VscHistory className="col-span-2 text-xl" />,
+    name: "History",
+    color: false,
+  },
+];
+
+export const tab3 = [
+  {
+    icon: <AiOutlineFire className="col-span-2 text-xl" />,
+    name: "Trending",
+    color: false,
+  },
+  {
+    icon: <IoBagHandleOutline className="col-span-2 text-xl" />,
+    name: "Shopping",
+    color: false,
+  },
+  {
+    icon: <PiMusicNoteThin className="col-span-2 text-xl" />,
+    name: "Music",
+    color: false,
+  },
+  {
+    icon: <PiFilmSlate className="col-span-2 text-xl" />,
+    name: "Movies",
+    color: false,
+  },
+  {
+    icon: <MdOutlineLiveTv className="col-span-2 text-xl" />,
+    name: "Live",
+    color: false,
+  },
+  {
+    icon: <PiGameControllerThin className="col-span-2 text-xl" />,
+    name: "Gaming",
+    color: false,
+  },
+  {
+    icon: <BsNewspaper className="col-span-2 text-xl" />,
+    name: "News",
+    color: false,
+  },
+  {
+    icon: <AiOutlineBulb className="col-span-2 text-xl" />,
+    name: "Learning",
+    color: false,
+  },
+  {
+    icon: <PiCoatHanger className="col-span-2 text-xl" />,
+    name: "Fashion & beauty",
+    color: false,
+  },
+];
+
+export const tab4 = [
+  {
+    icon: <AiFillYoutube className="col-span-2 text-xl" />,
+    name: "YouTube Premium",
+    color: false,
+  },
+  {
+    icon: <SiYoutubemusic className="col-span-2 text-xl" />,
+    name: "YouTube Music",
+    color: false,
+  },
+  {
+    icon: <TbBrandYoutubeKids className="col-span-2 text-xl" />,
+    name: "YouTube Kids",
+    color: false,
+  },
+];
+
+export const tab5 = [
+  {
+    icon: <IoSettingsOutline className="col-span-2 text-xl" />,
+    name: "Settings",
+    color: false,
+  },
+  {
+    icon: <PiFlagThin className="col-span-2 text-xl" />,
+    name: "Report history",
+    color: false,
+  },
+  {
+    icon: <IoHelpCircleOutline className="col-span-2 text-xl" />,
+    name: "Help",
+    color: false,
   },
 ];

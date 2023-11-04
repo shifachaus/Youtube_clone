@@ -5,15 +5,15 @@ import { useContext, useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import { Link } from "react-router-dom";
-// import logo from "../../public/yt-logo.png";
-import { RxHamburgerMenu } from "react-icons/rx";
 import { FiArrowLeft } from "react-icons/fi";
 import UserAvatar from "./UserAvatar";
 import { useUserContext } from "../context/user_context";
 import ThemeContext from "../context/theme_context";
 
-import { ImYoutube2 } from "react-icons/im";
 import { MdKeyboardVoice } from "react-icons/md";
+import Logo from "./Logo";
+import SearchBarSmall from "./SearchBarSmall";
+import SearchBarLarge from "./SearchBarLarge";
 
 const Head = () => {
   const { isDarkTheme } = useContext(ThemeContext);
@@ -76,25 +76,10 @@ const Head = () => {
           }  `}
         >
           <div
-            className="flex col-span-4 items-center gap-4 md:px-2"
+            className="flex col-span-4 items-center gap-4 "
             onClick={() => setShowSuggestions(false)}
           >
-            <span
-              onClick={() => handleToggle()}
-              className={`${
-                !isDarkTheme ? "hover:bg-stone-900" : "hover:bg-neutral-200 "
-              }   rounded-full p-2`}
-            >
-              <RxHamburgerMenu className="text-xl cursor-pointer  " />
-            </span>
-
-            <Link to="/">
-              {/* <img className="w-24" src={logo} alt="logo" /> */}
-              <ImYoutube2
-                className="col-span-2 w-20 h-8"
-                onClick={() => setShowSuggestions(false)}
-              />
-            </Link>
+            <Logo style={"px-2 py-0"} />
           </div>
 
           <div className="col-span-7 flex items-center gap-6 justify-end sm:justify-between max-w-s">
@@ -108,69 +93,17 @@ const Head = () => {
                 <GoSearch className=" text-xl cursor-pointer " />
               </span>
 
-              <div className="hidden sm:block">
-                <div className="flex items-center ">
-                  <input
-                    className={`w-11/2 sm:w-[100px] md:w-[300px] lg:w-[550px] outline-0  border border-t border-b   px-5 py-[.4rem] rounded-l-full placeholder:text-neutral-500  ${
-                      !isDarkTheme
-                        ? "bg-zinc-950 text-neutral-100  border-neutral-700"
-                        : "bg-white text-black border-neutral-300 "
-                    }   `}
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    onFocus={() => setShowSuggestions(true)}
-                    placeholder="Search"
-                  />
-                  <button
-                    className={`border-r border-t border-b px-5   ${
-                      !isDarkTheme
-                        ? "bg-zinc-800 border-neutral-700 "
-                        : "bg-neutral-100 text-black border-neutral-300"
-                    }  rounded-r-full  text-white py-[.53rem]`}
-                  >
-                    <GoSearch
-                      className={` ${
-                        !isDarkTheme
-                          ? " text-neutral-200"
-                          : " text-neutral-700 "
-                      }  text-xl cursor-pointer `}
-                    />
-                  </button>
-                </div>
-
-                {showSuggestions && (
-                  <div
-                    className={`fixed top-14 z-50 py-2  w-[30%] sm:w-[250px] lg:w-[500px] rounded-lg shadow-md border  ${
-                      !isDarkTheme
-                        ? "border-zinc-800 bg-zinc-800 text-neutral-100  "
-                        : " bg-neutral-100 text-black border-neutral-300"
-                    } `}
-                  >
-                    <ul>
-                      {suggestions?.map((s, index) => (
-                        <li
-                          className={`px-4 py-2  ${
-                            !isDarkTheme
-                              ? "hover:bg-zinc-900"
-                              : "hover:bg-neutral-300"
-                          } `}
-                          onClick={(e) => getSearchResults(e, s)} // Pass the 's' (suggestion) to getSearchResults
-                          key={index} // Use the index as the key
-                        >
-                          <Link
-                            className="flex gap-2 items-center"
-                            to={"/result?search_query=" + s}
-                          >
-                            <GoSearch /> {s}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
+              <SearchBarLarge
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+                setShowSuggestions={setShowSuggestions}
+                showSuggestions={showSuggestions}
+                suggestions={suggestions}
+                getSearchResults={getSearchResults}
+              />
 
               <span
+                onClick={() => setShowSuggestions(false)}
                 className={` ${
                   !isDarkTheme
                     ? "hover:bg-neutral-700 bg-zinc-800"
@@ -187,79 +120,15 @@ const Head = () => {
         </div>
 
         {showSearchBar && (
-          <div className="flex items-center gap-6   sm:hidden ">
-            <span
-              className={`w-1/1  ${
-                !isDarkTheme ? "hover:bg-stone-900" : "hover:bg-neutral-200 "
-              } rounded-full p-2 `}
-              onClick={() => setShowSearchBar(false)}
-            >
-              <FiArrowLeft
-                className={`text-2xl cursor-pointer ${
-                  !isDarkTheme ? "text-neutral-100" : "text-black"
-                }`}
-              />
-            </span>
-            <div className="flex items-center container">
-              <input
-                type="text"
-                className={` w-3/4 sm:w-[200px] md:w-[300px] lg:w-[550px] outline-0  border border-t border-b   px-5 py-[.4rem] rounded-l-full placeholder:text-neutral-500  ${
-                  !isDarkTheme
-                    ? "bg-stone-950 text-neutral-100  border-neutral-700"
-                    : "bg-white text-black border-neutral-300 "
-                }   `}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                onFocus={() => setShowSuggestions(true)}
-                placeholder="Search"
-              />
-              <button
-                className={`border-r border-t border-b px-5   ${
-                  !isDarkTheme
-                    ? "bg-zinc-900 border-neutral-700 "
-                    : "bg-neutral-100 text-black border-neutral-300"
-                }  rounded-r-full  text-white py-[.53rem]`}
-              >
-                <GoSearch
-                  className={` ${
-                    !isDarkTheme ? " text-neutral-200" : " text-neutral-700 "
-                  }  text-xl cursor-pointer `}
-                />
-              </button>
-
-              {showSuggestions && (
-                <div
-                  className={`fixed top-14 z-50 py-2  w-[55%]  rounded-lg shadow-md border  ${
-                    !isDarkTheme
-                      ? "border-zinc-800 bg-zinc-800 text-neutral-100  "
-                      : " bg-neutral-100 text-black border-neutral-300"
-                  }`}
-                >
-                  <ul>
-                    {suggestions?.map((s, index) => (
-                      <li
-                        className={`px-4 py-2  ${
-                          !isDarkTheme
-                            ? "hover:bg-zinc-900"
-                            : "hover:bg-neutral-300"
-                        } `}
-                        onClick={(e) => getSearchResults(e, s)}
-                        key={index}
-                      >
-                        <Link
-                          className="flex gap-4 items-center "
-                          to={"/result?search_query=" + s}
-                        >
-                          <GoSearch className="text-md font-thin cursor-pointer " />
-                          {s}
-                        </Link>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </div>
+          <SearchBarSmall
+            setShowSearchBar={setShowSearchBar}
+            searchQuery={searchQuery}
+            setSearchQuery={setSearchQuery}
+            setShowSuggestions={setShowSuggestions}
+            showSuggestions={showSuggestions}
+            suggestions={suggestions}
+            getSearchResults={getSearchResults}
+          />
         )}
       </div>
     </div>
