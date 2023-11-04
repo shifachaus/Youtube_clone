@@ -1,5 +1,5 @@
 import { useContext, useEffect, useLayoutEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { closeMenu } from "../utils/appSlice";
 // import { useParams } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";

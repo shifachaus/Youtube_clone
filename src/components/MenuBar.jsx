@@ -6,6 +6,9 @@ import library from "../../public/library.png";
 import { useSelector } from "react-redux";
 import { useContext } from "react";
 import ThemeContext from "../context/theme_context";
+import { GoHomeFill } from "react-icons/go";
+import { MdOutlineSubscriptions, MdOutlineVideoLibrary } from "react-icons/md";
+import { CiYoutube } from "react-icons/ci";
 
 const MenuBar = () => {
   const { isDarkTheme } = useContext(ThemeContext);
@@ -30,7 +33,8 @@ const MenuBar = () => {
                     : " hover:bg-neutral-200 "
                 }  py-2 rounded-md `}
               >
-                <img src={home} alt="home" className="w-6" />
+                <GoHomeFill className="col-span-2 text-xl" />
+
                 <p className="text-[11px]   "> Home</p>
               </li>
             </Link>
@@ -39,7 +43,7 @@ const MenuBar = () => {
                 !isDarkTheme ? " hover:bg-zinc-800 " : " hover:bg-neutral-200 "
               }  py-2 rounded-md `}
             >
-              <img src={shorts} alt="Shorts" className="w-6" />
+              <CiYoutube className="col-span-2 text-xl" />
               <p className="text-[11px] "> Shorts</p>
             </li>
             <li
@@ -47,7 +51,7 @@ const MenuBar = () => {
                 !isDarkTheme ? " hover:bg-zinc-800 " : " hover:bg-neutral-200 "
               }  py-2 rounded-md `}
             >
-              <img src={subscription} alt="Subscriptions" className="w-6" />
+              <MdOutlineSubscriptions className="col-span-2 text-xl" />
               <p className="text-[11px] "> Subscriptions</p>
             </li>
             <li
@@ -55,7 +59,7 @@ const MenuBar = () => {
                 !isDarkTheme ? " hover:bg-zinc-800 " : " hover:bg-neutral-200 "
               }  py-2 rounded-md `}
             >
-              <img src={library} alt="Library" className="w-6" />
+              <MdOutlineVideoLibrary className="col-span-2 text-xl" />
               <p className="text-[11px] ">Library</p>
             </li>
           </ul>

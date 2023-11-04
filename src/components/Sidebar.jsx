@@ -15,15 +15,35 @@ import movie from "../../public/movies.png";
 import music from "../../public/music.png";
 import live from "../../public/wave.png";
 import game from "../../public/game.png";
-import { IoBagHandleOutline } from "react-icons/io5";
+import {
+  IoBagHandleOutline,
+  IoSettingsOutline,
+  IoHelpCircleOutline,
+} from "react-icons/io5";
 import { BsNewspaper } from "react-icons/bs";
-import { AiOutlineBulb, AiOutlineFire } from "react-icons/ai";
+import { AiOutlineBulb, AiOutlineFire, AiFillYoutube } from "react-icons/ai";
 import { PiCoatHanger } from "react-icons/pi";
 import LoginButton from "./LoginButton";
 import { useUserContext } from "../context/user_context";
 import { useContext } from "react";
 import ThemeContext from "../context/theme_context";
-
+import { GoHomeFill } from "react-icons/go";
+import {
+  MdOutlineSubscriptions,
+  MdOutlineVideoLibrary,
+  MdOutlineLiveTv,
+} from "react-icons/md";
+import { VscHistory } from "react-icons/vsc";
+import {
+  PiMusicNoteThin,
+  PiFilmSlate,
+  PiGameControllerThin,
+  PiFlagThin,
+} from "react-icons/pi";
+import { TbBrandYoutubeKids } from "react-icons/tb";
+import { SiYoutubemusic } from "react-icons/si";
+import { ImYoutube2 } from "react-icons/im";
+import { CiYoutube } from "react-icons/ci";
 const Sidebar = () => {
   const { isDarkTheme } = useContext(ThemeContext);
   const dispatch = useDispatch();
@@ -58,7 +78,7 @@ const Sidebar = () => {
           </span>
 
           <Link to="/">
-            <img className="w-24 " src={logo} alt="logo" />
+            <ImYoutube2 className="col-span-2 w-20 h-8" />
           </Link>
         </div>
         <div
@@ -83,7 +103,8 @@ const Sidebar = () => {
                     : "bg-neutral-100 hover:bg-neutral-200 "
                 }`}
               >
-                <img src={home} alt="logo" className="col-span-2 " />
+                <GoHomeFill className="col-span-2 text-xl" />
+
                 <p className="font-medium text-[.9rem] col-span-10"> Home</p>
               </li>
             </Link>
@@ -94,7 +115,7 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={shorts} alt="logo" className="col-span-2" />
+              <CiYoutube className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Shorts</p>
             </li>
             <li
@@ -104,7 +125,8 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={subscription} alt="logo" className="col-span-2" />
+              <MdOutlineSubscriptions className="col-span-2 text-xl" />
+
               <p className=" text-[.9rem] col-span-10"> Subscriptions</p>
             </li>
           </ul>
@@ -121,7 +143,8 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={library} alt="logo" className="col-span-2" />
+              <MdOutlineVideoLibrary className="col-span-2 text-xl" />
+
               <p className=" text-[.9rem]    col-span-10">Library</p>
             </li>
             <li
@@ -131,13 +154,18 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={history} alt="logo" className="col-span-2" />
+              <VscHistory className="col-span-2 text-xl" />
+
               <p className="text-[.9rem]   col-span-10">History</p>
             </li>
           </ul>
 
           {!myUser && (
-            <ul className="border-b border-neutral-600 flex flex-col  px-5 py-2 ">
+            <ul
+              className={`border-b flex flex-col   py-2  px-5    ${
+                !isDarkTheme ? "border-neutral-600 " : "border-neutral-601  "
+              } `}
+            >
               <li className="text-md mb-2 flex flex-col items-start gap-4 ">
                 <p>Sign in to like videos, comment, and subscribe.</p>
                 <LoginButton />
@@ -169,6 +197,7 @@ const Sidebar = () => {
               }`}
             >
               <IoBagHandleOutline className="col-span-2 text-xl" />
+
               <p className=" text-[.9rem] col-span-10"> Shopping</p>
             </li>
             <li
@@ -178,7 +207,8 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={music} alt="logo" className="col-span-2" />
+              <PiMusicNoteThin className="col-span-2 text-xl" />
+
               <p className=" text-[.9rem] col-span-10"> Music</p>
             </li>
             <li
@@ -188,7 +218,7 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={movie} alt="logo" className="col-span-2" />
+              <PiFilmSlate className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Movies</p>
             </li>
             <li
@@ -198,7 +228,7 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={live} alt="logo" className="col-span-2" />
+              <MdOutlineLiveTv className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Live</p>
             </li>
             <li
@@ -208,7 +238,7 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={game} alt="logo" className="col-span-2" />
+              <PiGameControllerThin className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Gaming</p>
             </li>
             <li
@@ -253,7 +283,7 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={unknown} alt="logo" className="col-span-2" />
+              <AiFillYoutube className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> YouTube Premium</p>
             </li>
 
@@ -264,7 +294,7 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={unknown} alt="logo" className="col-span-2" />
+              <SiYoutubemusic className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> YouTube Music</p>
             </li>
             <li
@@ -274,7 +304,7 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={unknown} alt="logo" className="col-span-2" />
+              <TbBrandYoutubeKids className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> YouTube Kids</p>
             </li>
           </ul>
@@ -291,7 +321,8 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={settings} alt="logo" className="col-span-2" />
+              <IoSettingsOutline className="col-span-2 text-xl" />
+
               <p className=" text-[.9rem] col-span-10"> Settings</p>
             </li>
             <li
@@ -301,7 +332,7 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={report} alt="logo" className="col-span-2" />
+              <PiFlagThin className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Report history</p>
             </li>
             <li
@@ -311,22 +342,21 @@ const Sidebar = () => {
                   : " hover:bg-neutral-200 "
               }`}
             >
-              <img src={unknown} alt="logo" className="col-span-2" />
+              <IoHelpCircleOutline className="col-span-2 text-xl" />
               <p className=" text-[.9rem] col-span-10"> Help</p>
             </li>
           </ul>
 
-          <div className="flex flex-col pb-3">
+          <div className="flex flex-col pb-10">
             <p className="text-sm text-neutral-500 px-5 py-2">
               Lorem Ipsum is a type of placeholder text used in the printing and
               typesetting industry.
             </p>
             <p className="text-sm text-neutral-500 px-5 py-2">
-              It's often used as a temporary filler text when the actual content
-              is not available.
+              It's often used as a temporary filler text when the actual
             </p>
 
-            <p className="text-sm text-neutral-500 px-5 py-1"> Lorem Ipsum</p>
+            <p className="text-sm text-neutral-500 px-5 py-2"> Lorem Ipsum</p>
           </div>
         </div>
       </aside>

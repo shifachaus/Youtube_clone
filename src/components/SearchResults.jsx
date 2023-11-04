@@ -5,7 +5,7 @@ import { formatDateAsRelative, formatNumber } from "../utils/constants";
 const SearchResults = ({ result }) => {
   const { isDarkTheme } = useContext(ThemeContext);
   return (
-    <div className="md:flex  grid grid-cols-2  gap-4 mb-2 ">
+    <div className="md:flex  grid grid-cols-2  gap-4 mb-10 sm:mb-4">
       <div className="mb-4 md:mb-2 md:w-4/12 ">
         <img
           src={result?.snippet?.thumbnails?.medium?.url}

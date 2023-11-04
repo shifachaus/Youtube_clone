@@ -22,7 +22,9 @@ const Popup = () => {
     <div
       id="info-popup"
       tabIndex="-1"
-      className=" overflow-y-auto overflow-x-hidden fixed top-0  right-12"
+      className={` overflow-y-auto overflow-x-hidden fixed top-9  ${
+        myUser ? "right-13" : " right-20"
+      }`}
     >
       <div className="relative p-4 w-full max-w-lg h-full md:h-auto">
         <div
@@ -30,25 +32,29 @@ const Popup = () => {
             !isDarkTheme ? "bg-zinc-800" : "bg-white text-black"
           }  `}
         >
-          <div className=" flex gap-4 border-b items-center p-4  border-neutral-600">
-            <img
-              className="w-10 h-10 rounded-full"
-              src={myUser?.picture}
-              alt="avatar"
-            />
-            <div>
-              <p className=" text-md ">{myUser?.name}</p>
-              <p className="text-md ">@{myUser?.nickname}</p>
+          {myUser && (
+            <div className=" flex gap-4 border-b items-center p-4  border-neutral-600">
+              <img
+                className="w-10 h-10 rounded-full"
+                src={myUser?.picture}
+                alt="avatar"
+              />
+              <div>
+                <p className=" text-md ">{myUser?.name}</p>
+                <p className="text-md ">@{myUser?.nickname}</p>
+              </div>
             </div>
-          </div>
-          <div className=" flex gap-4 items-center p-4   border-b   border-neutral-600">
-            <CiLogout className="w-6 h-6" />
-            <div>
-              <button onClick={() => handleToggle()} className="  text-sm">
-                Sign out
-              </button>
+          )}
+          {myUser && (
+            <div className=" flex gap-4 items-center p-4   border-b   border-neutral-600">
+              <CiLogout className="w-6 h-6" />
+              <div>
+                <button onClick={() => handleToggle()} className="  text-sm">
+                  Sign out
+                </button>
+              </div>
             </div>
-          </div>
+          )}
 
           <div
             className=" flex gap-4 items-center   p-4  "
