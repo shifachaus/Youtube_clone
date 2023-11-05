@@ -16,12 +16,12 @@ const UserAvatar = () => {
   const isPopupOpen = useSelector((store) => store.app.isPopupOpen);
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1">
       {!myUser ? (
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1">
           <span className="p-2 ">
             <RxDotsVertical
-              className=" text-xl cursor-pointer "
+              className="text-md sm:text-xl cursor-pointer "
               onClick={handleToggle}
             />
           </span>

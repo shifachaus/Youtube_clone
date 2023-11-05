@@ -13,18 +13,18 @@ const Logo = ({ style }) => {
     dispatch(toggleMenu());
   };
   return (
-    <div className={`flex gap-4  col-span-1 items-center ${style} `}>
+    <div className={`flex gap-1 sm:gap-2  col-span-1 items-center ${style} `}>
       <span
         onClick={() => handleToggle()}
         className={`${
           !isDarkTheme ? "hover:bg-stone-900" : "hover:bg-neutral-200 "
         }   rounded-full p-2`}
       >
-        <RxHamburgerMenu className="text-xl cursor-pointer " />
+        <RxHamburgerMenu className="text-md  lg:text-xl cursor-pointer " />
       </span>
 
       <Link to="/">
-        <ImYoutube2 className="col-span-2 w-20 h-8" />
+        <ImYoutube2 className="col-span-2 w-16 md:w-20 h-9" />
       </Link>
     </div>
   );

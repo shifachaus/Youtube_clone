@@ -25,9 +25,9 @@ const MainContainer = () => {
   console.log(isMenuOpen);
 
   return (
-    <section className={`${!isMenuOpen ? "md:ml-20" : undefined} `}>
+    <section className={` ${!isMenuOpen ? "md:ml-20" : undefined} `}>
       <div className="col-span-11 ">
-        <div className="fixed top-[3.8rem]   ">
+        <div className="fixed top-[3rem]   ">
           <ButtonList categories={categories} />
         </div>
 

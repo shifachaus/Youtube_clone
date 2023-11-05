@@ -79,18 +79,20 @@ const Head = () => {
             className="flex col-span-4 items-center gap-4 "
             onClick={() => setShowSuggestions(false)}
           >
-            <Logo style={"px-2 py-0"} />
+            <Logo style={"px-0  py-0"} />
           </div>
 
-          <div className="col-span-7 flex items-center gap-6 justify-end sm:justify-between max-w-s">
-            <div className="flex items-center justify-between gap-6">
+          <div className="col-span-7 flex items-center sm:gap-2 justify-end sm:justify-between max-w-s">
+            <div className="flex items-center justify-between sm:gap-2">
               <span
                 className={`sm:hidden ${
-                  !isDarkTheme ? "hover:bg-stone-900" : "hover:bg-neutral-200 "
+                  !isDarkTheme
+                    ? "hover:bg-neutral-700"
+                    : "hover:bg-neutral-200 "
                 }  rounded-full p-2 `}
                 onClick={() => setShowSearchBar(true)}
               >
-                <GoSearch className=" text-xl cursor-pointer " />
+                <GoSearch className=" text-md sm:text-xl cursor-pointer " />
               </span>
 
               <SearchBarLarge
@@ -106,11 +108,11 @@ const Head = () => {
                 onClick={() => setShowSuggestions(false)}
                 className={` ${
                   !isDarkTheme
-                    ? "hover:bg-neutral-700 bg-zinc-800"
-                    : "hover:bg-neutral-200 bg-neutral-100"
-                }  rounded-full p-2 `}
+                    ? "hover:bg-neutral-700 md:bg-neutral-800"
+                    : "hover:bg-neutral-300  md:bg-neutral-200"
+                }  rounded-full p-2  `}
               >
-                <MdKeyboardVoice className=" text-xl cursor-pointer " />
+                <MdKeyboardVoice className="text-md sm:text-xl cursor-pointer " />
               </span>
             </div>
             <div className="flex" onClick={() => setShowSuggestions(false)}>

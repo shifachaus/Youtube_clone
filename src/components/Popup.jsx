@@ -23,8 +23,8 @@ const Popup = () => {
     <div
       id="info-popup"
       tabIndex="-1"
-      className={` overflow-y-auto overflow-x-hidden fixed top-9  ${
-        myUser ? "right-8" : " right-20"
+      className={` overflow-y-auto overflow-x-hidden fixed top-7  ${
+        myUser ? "right-8" : "right-20 sm:right-24"
       }`}
     >
       <div className="relative p-4 w-full max-w-lg h-full md:h-auto">
@@ -72,12 +72,12 @@ const Popup = () => {
             }}
           >
             {!isDarkTheme ? (
-              <div className=" flex gap-4 items-center   p-2  ">
+              <div className=" flex gap-4 items-center   sm:p-2  ">
                 <HiMoon className="text-xl" />
                 <p>Appearance: Dark theme</p>
               </div>
             ) : (
-              <div className=" flex gap-4 items-center   p-2  ">
+              <div className=" flex gap-4 items-center   sm:p-2  ">
                 <HiMoon className="text-xl" />
                 <p>Appearance: Light theme</p>
               </div>
