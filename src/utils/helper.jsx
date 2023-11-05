@@ -25,6 +25,24 @@ import { TbBrandYoutubeKids } from "react-icons/tb";
 import { SiYoutubemusic } from "react-icons/si";
 import { CiYoutube } from "react-icons/ci";
 
+export const categories = [
+  "All",
+  "JavaScript",
+  "TypeScript",
+  "Programming",
+  "Weight Lifting",
+  "Bowling",
+  "Hiking",
+  "React",
+  "Next.js",
+  "Functional Programming",
+  "Object Oriented Programming",
+  "Frontend Web Development",
+  "Backend Web Development",
+  "Web Development",
+  "Coding",
+];
+
 var nameList = [
   "Time",
   "Past",

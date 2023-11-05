@@ -1,10 +1,11 @@
-import React, { useContext, useRef, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import ThemeContext from "../context/theme_context";
 import Button from "./Button";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useSelector } from "react-redux";
+import { categories } from "../utils/helper";
 
-const ButtonList = ({ categories }) => {
+const ButtonList = () => {
   const { isDarkTheme } = useContext(ThemeContext);
   const buttonContainerRef = useRef(null);
   const [scrollPosition, setScrollPosition] = useState(0);
@@ -42,18 +43,22 @@ const ButtonList = ({ categories }) => {
         }`}
       >
         {showLeftButton && (
-          <button
-            onClick={scrollLeft}
-            className={`hover:rounded-full p-3 z-10 fixed left-1 sm:left-2  ${
+          <div
+            className={` fixed left-0 sm:left-2  ${
               isMenuOpen ? "md:left-[15rem]" : "md:left-24"
-            } ${
-              isDarkTheme
-                ? "hover:bg-neutral-200 bg-white "
-                : "hover:bg-zinc-700 bg-zinc-950"
-            }`}
+            } ${isDarkTheme ? " bg-white " : " bg-zinc-950"}`}
           >
-            <BsChevronLeft />
-          </button>
+            <button
+              onClick={scrollLeft}
+              className={`hover:rounded-full p-3 z-10 ${
+                isDarkTheme
+                  ? "hover:bg-neutral-200 bg-white "
+                  : "hover:bg-zinc-700 bg-zinc-950"
+              }`}
+            >
+              <BsChevronLeft />
+            </button>
+          </div>
         )}
         <div
           className={`overflow-x-scroll no-scrollbar`}
@@ -71,17 +76,21 @@ const ButtonList = ({ categories }) => {
           ))}
         </div>
         {showRightButton && (
-          <button
-            onClick={scrollRight}
-            className={`hover:rounded-full p-3 z-10 ${
-              isDarkTheme
-                ? "hover:bg-neutral-200 bg-white "
-                : "hover:bg-zinc-700 bg-zinc-950"
-            }`}
+          <div
+            className={` z-10 ${isDarkTheme ? " bg-white " : " bg-zinc-950"}`}
             style={{ position: "fixed", right: 0, left: "auto" }}
           >
-            <BsChevronRight />
-          </button>
+            <button
+              className={`hover:rounded-full p-3 z-10 ${
+                isDarkTheme
+                  ? "hover:bg-neutral-200 bg-white "
+                  : "hover:bg-zinc-700 bg-zinc-950"
+              }`}
+              onClick={scrollRight}
+            >
+              <BsChevronRight />
+            </button>
+          </div>
         )}
       </div>
     </div>

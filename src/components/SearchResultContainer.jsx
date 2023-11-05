@@ -31,8 +31,8 @@ const SearchResultContainer = () => {
   return (
     <div
       className={`${
-        !isMenuOpen && "md:mx-60"
-      } container col-span-11 h-screen overflow-y-auto scroll-smooth no-scrollbar p-[1.6rem] mt-14  max-w-6xl `}
+        !isMenuOpen && "md:mx-20 lg:mx-60"
+      }  col-span-11 h-screen overflow-y-auto scroll-smooth no-scrollbar p-[1.6rem] mt-14  max-w-6xl `}
     >
       {results?.map((result, i) => (
         <SearchResults result={result} key={i} />

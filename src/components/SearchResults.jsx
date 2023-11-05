@@ -5,18 +5,18 @@ import { formatDateAsRelative, formatNumber } from "../utils/helper";
 const SearchResults = ({ result }) => {
   const { isDarkTheme } = useContext(ThemeContext);
   return (
-    <div className="md:flex  grid grid-cols-2  gap-4 mb-10 sm:mb-4">
-      <div className="mb-4 md:mb-2 md:w-4/12 ">
+    <div className=" flex flex-col  sm:flex-row  gap-4 mb-10 ">
+      <div className="mb-4 md:mb-2 sm:w-4/12 ">
         <img
           src={result?.snippet?.thumbnails?.medium?.url}
           alt="image"
-          className="rounded-lg w-full object-cover object-center group-hover:opacity-75 mb-8 "
+          className="rounded-lg w-full object-cover object-center group-hover:opacity-75  "
         />
       </div>
 
-      <div className="flex flex-col gap-2  md:w-8/12 ">
+      <div className="flex flex-col gap-2  sm:w-8/12 ">
         <p
-          className={`leading-1 text-md font-medium lg:text-lg ${
+          className={`leading-1 text-md font-medium lg:text-lg  ${
             isDarkTheme ? "text-black" : "text-white"
           }`}
         >

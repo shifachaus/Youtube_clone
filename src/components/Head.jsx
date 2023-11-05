@@ -82,8 +82,8 @@ const Head = () => {
             <Logo style={"px-0  py-0"} />
           </div>
 
-          <div className="col-span-7 flex items-center sm:gap-2 justify-end sm:justify-between max-w-s">
-            <div className="flex items-center justify-between sm:gap-2">
+          <div className="col-span-7 flex items-center sm:gap-4 justify-end sm:justify-between max-w-s">
+            <div className="flex items-center justify-between sm:gap-4">
               <span
                 className={`sm:hidden ${
                   !isDarkTheme
@@ -92,7 +92,7 @@ const Head = () => {
                 }  rounded-full p-2 `}
                 onClick={() => setShowSearchBar(true)}
               >
-                <GoSearch className=" text-md sm:text-xl cursor-pointer " />
+                <GoSearch className=" text-lg sm:text-xl cursor-pointer " />
               </span>
 
               <SearchBarLarge
@@ -108,11 +108,11 @@ const Head = () => {
                 onClick={() => setShowSuggestions(false)}
                 className={` ${
                   !isDarkTheme
-                    ? "hover:bg-neutral-700 md:bg-neutral-800"
-                    : "hover:bg-neutral-300  md:bg-neutral-200"
+                    ? "hover:bg-neutral-700 sm:bg-neutral-800"
+                    : "hover:bg-neutral-300  sm:bg-neutral-200"
                 }  rounded-full p-2  `}
               >
-                <MdKeyboardVoice className="text-md sm:text-xl cursor-pointer " />
+                <MdKeyboardVoice className="text-lg sm:text-2xl cursor-pointer " />
               </span>
             </div>
             <div className="flex" onClick={() => setShowSuggestions(false)}>
