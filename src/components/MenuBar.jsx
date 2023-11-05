@@ -14,7 +14,7 @@ const MenuBar = () => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  console.log(isMenuOpen);
+  // console.log(isMenuOpen);
 
   return (
     <section

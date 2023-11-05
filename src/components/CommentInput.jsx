@@ -8,7 +8,7 @@ import { v4 as uuidv4 } from "uuid";
 
 const CommentInput = ({ id, comments, comment }) => {
   const { isDarkTheme } = useContext(ThemeContext);
-  const [commnetReply, setCommentReply] = useState("");
+  const [commentReply, setCommentReply] = useState("");
   const { myUser } = useUserContext();
 
   const dispatch = useDispatch();
@@ -16,10 +16,11 @@ const CommentInput = ({ id, comments, comment }) => {
   const replyToComment = () => {
     dispatch(
       addReplyToComment({
-        id: uuidv4(),
+        id: id,
         reply: {
+          id: uuidv4(),
           name: myUser?.nickname || myUser?.given_name,
-          text: commnetReply,
+          text: commentReply,
           replies: [],
         },
       })
@@ -41,7 +42,7 @@ const CommentInput = ({ id, comments, comment }) => {
           }`}
           placeholder="Add a reply..."
           type="text"
-          value={commnetReply}
+          value={commentReply}
           onChange={(e) => setCommentReply(e.target.value)}
         />
       </div>
@@ -58,9 +59,9 @@ const CommentInput = ({ id, comments, comment }) => {
         </button>
 
         <button
-          disabled={commnetReply.length == 0}
+          disabled={commentReply.length == 0}
           className={
-            commnetReply.length > 0
+            commentReply.length > 0
               ? `text-black font-medium flex items-center gap-2 rounded-full px-3 py-2 ${
                   !isDarkTheme
                     ? "bg-sky-600 text-neutral-300 hover:bg-sky-700"

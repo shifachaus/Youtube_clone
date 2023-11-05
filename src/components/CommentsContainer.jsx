@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 
 import { BiSolidUserCircle } from "react-icons/bi";
 import { useUserContext } from "../context/user_context";
-import { commentsData } from "../utils/constants";
+import { commentsData } from "../utils/helper";
 import { useDispatch } from "react-redux";
 import { addComment } from "../utils/commentSlice";
 import NestedComments from "./NestedComments";

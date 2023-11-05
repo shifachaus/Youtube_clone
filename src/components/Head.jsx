@@ -56,7 +56,7 @@ const Head = () => {
   };
 
   const getSearchResults = (e) => {
-    console.log(e.target.textContent, "content");
+    // console.log(e.target.textContent, "content");
     setSearchQuery(e.target.textContent);
     setSearchResult(e.target.textContent);
   };

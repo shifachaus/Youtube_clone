@@ -1,5 +1,5 @@
 import { createSlice, current } from "@reduxjs/toolkit";
-import { commentsData } from "./constants";
+import { commentsData } from "./helper";
 
 const commentSlice = createSlice({
   name: "comment",
@@ -11,7 +11,7 @@ const commentSlice = createSlice({
   reducers: {
     addComment: (state, action) => {
       state.commentsData.unshift(action.payload);
-      console.log(current(state), "COMMENT");
+      // console.log(current(state), "COMMENT");
     },
 
     toggleReplies: (state, action) => {
@@ -30,9 +30,10 @@ const commentSlice = createSlice({
     },
 
     addReplyToComment: (state, action) => {
-      const { index, reply } = action.payload;
-      const comment = state.commentsData[index];
+      const { id, reply } = action.payload;
 
+      let comment = state.commentsData?.find((com) => com.id == id);
+      // console.log(action.payload, "hh", current(comment));
       if (comment) {
         comment.replies.push(reply);
       }

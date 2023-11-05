@@ -7,7 +7,7 @@ import { YOUTUBE_VIDEO_API } from "../utils/constants";
 import CommentsContainer from "./CommentsContainer";
 import LiveChat from "./LiveChat";
 import Sidebar from "./Sidebar";
-import { formatNumber, formatDateAsRelative } from "../utils/constants";
+import { formatNumber, formatDateAsRelative } from "../utils/helper";
 import { BiSolidUserCircle } from "react-icons/bi";
 import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
 import { PiShareFatThin } from "react-icons/pi";
@@ -31,7 +31,7 @@ const WatchPage = () => {
     const response = await fetch(YOUTUBE_VIDEO_API + searchParams.get("v"));
     const data = await response.json();
     setVideo(data?.items);
-    console.log(data.items);
+    // console.log(data.items);
   };
 
   const [expanded, setExpanded] = useState(false);

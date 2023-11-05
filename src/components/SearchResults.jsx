@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ThemeContext from "../context/theme_context";
-import { formatDateAsRelative, formatNumber } from "../utils/constants";
+import { formatDateAsRelative, formatNumber } from "../utils/helper";
 
 const SearchResults = ({ result }) => {
   const { isDarkTheme } = useContext(ThemeContext);

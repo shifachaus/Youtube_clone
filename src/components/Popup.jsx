@@ -11,7 +11,7 @@ const Popup = () => {
 
   const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
 
-  console.log(isDarkTheme, "lll");
+  // console.log(isDarkTheme, "lll");
 
   const dispatch = useDispatch();
   const handleToggle = () => {

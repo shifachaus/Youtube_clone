@@ -11,7 +11,6 @@ const CommentsList = ({ comments }) => {
   const { isDarkTheme } = useContext(ThemeContext);
   const showReplies = useSelector((store) => store.comment.showReplies);
   const addReplies = useSelector((store) => store.comment.addReplies);
-  console.log(addReplies, "JJJ");
 
   const dispatch = useDispatch();
 

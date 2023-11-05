@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { formatDateAsRelative, formatNumber } from "../utils/constants";
+import { formatDateAsRelative, formatNumber } from "../utils/helper";
 import ThemeContext from "../context/theme_context";
 
 const VideoCard = ({ info }) => {
