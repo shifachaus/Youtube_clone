@@ -4,12 +4,9 @@ import { GoSearch } from "react-icons/go";
 import { useContext, useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
-import { Link } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
 import UserAvatar from "./UserAvatar";
 import { useUserContext } from "../context/user_context";
 import ThemeContext from "../context/theme_context";
-
 import { MdKeyboardVoice } from "react-icons/md";
 import Logo from "./Logo";
 import SearchBarSmall from "./SearchBarSmall";
@@ -19,7 +16,6 @@ const Head = () => {
   const { isDarkTheme } = useContext(ThemeContext);
   const dispatch = useDispatch();
   const searchCache = useSelector((store) => store.search);
-  const { myUser } = useUserContext();
 
   const [searchQuery, setSearchQuery] = useState("");
   const [suggestions, setSuggestions] = useState([]);

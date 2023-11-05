@@ -1,8 +1,4 @@
 import { Link } from "react-router-dom";
-import home from "../../public/home.png";
-import shorts from "../../public/shorts.png";
-import subscription from "../../public/subscriptions.png";
-import library from "../../public/library.png";
 import { useSelector } from "react-redux";
 import { useContext } from "react";
 import ThemeContext from "../context/theme_context";
@@ -14,7 +10,6 @@ const MenuBar = () => {
   const { isDarkTheme } = useContext(ThemeContext);
 
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);
-  // console.log(isMenuOpen);
 
   return (
     <section
