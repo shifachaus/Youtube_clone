@@ -1,8 +1,12 @@
-import { Outlet } from "react-router-dom";
 import Sidebar from "./Sidebar";
 import MenuBar from "./MenuBar";
-import { useContext } from "react";
+import { Suspense, lazy, useContext } from "react";
 import ThemeContext from "../context/theme_context";
+import Loading from "./Loading";
+// Lazy load Outlet
+const Outlet = lazy(() =>
+  import("react-router-dom").then((module) => ({ default: module.Outlet }))
+);
 
 const Body = () => {
   const { isDarkTheme } = useContext(ThemeContext);
@@ -14,11 +18,13 @@ const Body = () => {
           : "bg-white text-neutral-800 "
       }  `}
     >
-      <section className="md:grid md:grid-flow-col ">
-        <Sidebar />
-        <MenuBar />
-        <Outlet />
-      </section>
+      <Suspense fallback={<Loading />}>
+        <section className="md:grid md:grid-flow-col ">
+          <Sidebar />
+          <MenuBar />
+          <Outlet />
+        </section>
+      </Suspense>
     </div>
   );
 };
