@@ -5,7 +5,6 @@ import { useContext, useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";
 import { cacheResults } from "../utils/searchSlice";
 import UserAvatar from "./UserAvatar";
-import { useUserContext } from "../context/user_context";
 import ThemeContext from "../context/theme_context";
 import { MdKeyboardVoice } from "react-icons/md";
 import Logo from "./Logo";
@@ -22,10 +21,6 @@ const Head = () => {
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [searchResult, setSearchResult] = useState("");
   const [showSearchBar, setShowSearchBar] = useState(false);
-
-  const handleToggle = () => {
-    dispatch(toggleMenu());
-  };
 
   useEffect(() => {
     const timer = setTimeout(() => {

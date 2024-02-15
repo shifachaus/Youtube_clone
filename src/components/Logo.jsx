@@ -8,7 +8,9 @@ import { useContext } from "react";
 
 const Logo = ({ style }) => {
   const { isDarkTheme } = useContext(ThemeContext);
+
   const dispatch = useDispatch();
+
   const handleToggle = () => {
     dispatch(toggleMenu());
   };
@@ -20,7 +22,7 @@ const Logo = ({ style }) => {
           !isDarkTheme ? "hover:bg-stone-900" : "hover:bg-neutral-200 "
         }   rounded-full p-2`}
       >
-        <RxHamburgerMenu className="text-md  lg:text-xl cursor-pointer " />
+        <RxHamburgerMenu className="text-md md:text-lg  lg:text-xl cursor-pointer " />
       </span>
 
       <Link to="/">
