@@ -11,7 +11,6 @@ const commentSlice = createSlice({
   reducers: {
     addComment: (state, action) => {
       state.commentsData.unshift(action.payload);
-      // console.log(current(state), "COMMENT");
     },
 
     toggleReplies: (state, action) => {
@@ -33,7 +32,6 @@ const commentSlice = createSlice({
       const { id, reply } = action.payload;
 
       let comment = state.commentsData?.find((com) => com.id == id);
-      // console.log(action.payload, "hh", current(comment));
       if (comment) {
         comment.replies.push(reply);
       }

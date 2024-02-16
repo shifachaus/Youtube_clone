@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import ThemeContext from "../context/theme_context";
 import { GoSearch } from "react-icons/go";
 import { Link } from "react-router-dom";
-import { FiArrowLeft } from "react-icons/fi";
 
 const SearchBarLarge = ({
   searchQuery,

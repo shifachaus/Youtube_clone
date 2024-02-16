@@ -1,8 +1,6 @@
 import { useSelector } from "react-redux";
 import { useContext } from "react";
 import ThemeContext from "../context/theme_context";
-
-import Tabs from "./SidebarTabs";
 import Logo from "./Logo";
 import SidebarTabs from "./SidebarTabs";
 const Sidebar = () => {

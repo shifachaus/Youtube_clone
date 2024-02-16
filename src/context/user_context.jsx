@@ -8,8 +8,6 @@ export const UserProvider = ({ children }) => {
 
   const [myUser, setMyUser] = useState(null);
 
-  // console.log(myUser, "context");
-
   useEffect(() => {
     setMyUser(user);
   }, [user]);

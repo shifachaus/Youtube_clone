@@ -22,8 +22,6 @@ const SearchResultContainer = () => {
     );
 
     const data = await response.json();
-
-    // setResult(data?.items);
   };
 
   const isMenuOpen = useSelector((store) => store.app.isMenuOpen);

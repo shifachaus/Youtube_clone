@@ -4,7 +4,7 @@ import { closePopup } from "../utils/appSlice";
 import { useDispatch } from "react-redux";
 import { useContext } from "react";
 import ThemeContext from "../context/theme_context";
-import { HiOutlineMoon, HiMoon } from "react-icons/hi2";
+import { HiMoon } from "react-icons/hi2";
 
 const Popup = () => {
   const { myUser, logout } = useUserContext();

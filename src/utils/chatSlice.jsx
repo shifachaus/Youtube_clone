@@ -12,7 +12,6 @@ const chatSlice = createSlice({
         state.messages.shift();
       }
       state.messages.push(action.payload);
-      // console.log(current(state), "STATE");
     },
   },
 });
