@@ -3,7 +3,7 @@ import MenuBar from "./MenuBar";
 import { Suspense, lazy, useContext } from "react";
 import ThemeContext from "../context/theme_context";
 import Loading from "./Loading";
-// Lazy load Outlet
+
 const Outlet = lazy(() =>
   import("react-router-dom").then((module) => ({ default: module.Outlet }))
 );

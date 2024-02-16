@@ -6,14 +6,14 @@ import { generateRandomName, makeRandomMessage } from "../utils/helper";
 
 import Chat from "./Chat";
 import LiveChatLoginButton from "./LiveChatLoginButton";
-import { useUserContext } from "../context/user_context";
+
 import ThemeContext from "../context/theme_context";
 
-const LiveChat = () => {
+const LiveChat = ({ signInWithGoogle }) => {
   const { isDarkTheme } = useContext(ThemeContext);
-  const { myUser } = useUserContext();
 
   const messages = useSelector((store) => store.chat.messages);
+  const user = useSelector((store) => store.user?.user);
 
   const dispatch = useDispatch();
 
@@ -42,6 +42,8 @@ const LiveChat = () => {
   const handleMouseLeave = () => {
     setIsHovered(false);
   };
+
+  const isUserEmpty = !user || (Array.isArray(user) && user.length === 0);
 
   return (
     <div>
@@ -84,7 +86,13 @@ const LiveChat = () => {
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           >
-            {myUser ? <Chat /> : isHovered ? <LiveChatLoginButton /> : <Chat />}
+            {!isUserEmpty ? (
+              <Chat />
+            ) : isHovered ? (
+              <LiveChatLoginButton signInWithGoogle={signInWithGoogle} />
+            ) : (
+              <Chat />
+            )}
           </div>
 
           <div

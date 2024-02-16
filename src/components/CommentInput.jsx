@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { BiSolidUserCircle } from "react-icons/bi";
-import { useUserContext } from "../context/user_context";
-import { useDispatch } from "react-redux";
+
+import { useDispatch, useSelector } from "react-redux";
 import { addReplyToComment, cancelReply } from "../utils/commentSlice";
 import ThemeContext from "../context/theme_context";
 import { v4 as uuidv4 } from "uuid";
@@ -9,7 +9,8 @@ import { v4 as uuidv4 } from "uuid";
 const CommentInput = ({ id, comments, comment }) => {
   const { isDarkTheme } = useContext(ThemeContext);
   const [commentReply, setCommentReply] = useState("");
-  const { myUser } = useUserContext();
+
+  const user = useSelector((store) => store.user?.user);
 
   const dispatch = useDispatch();
 
@@ -19,7 +20,7 @@ const CommentInput = ({ id, comments, comment }) => {
         id: id,
         reply: {
           id: uuidv4(),
-          name: myUser?.nickname || myUser?.given_name,
+          name: user?.name,
           text: commentReply,
           replies: [],
         },

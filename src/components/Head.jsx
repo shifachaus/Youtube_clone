@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { toggleMenu } from "../utils/appSlice";
 import { GoSearch } from "react-icons/go";
 import { useContext, useEffect, useState } from "react";
 import { YOUTUBE_SEARCH_API } from "../utils/constants";

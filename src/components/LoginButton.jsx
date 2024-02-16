@@ -1,12 +1,9 @@
 import { FaRegUserCircle } from "react-icons/fa";
-import { useUserContext } from "../context/user_context";
 import { useContext } from "react";
 import ThemeContext from "../context/theme_context";
 
-const LoginButton = () => {
+const LoginButton = ({ signInWithGoogle }) => {
   const { isDarkTheme } = useContext(ThemeContext);
-  const { loginWithRedirect, myUser } = useUserContext();
-  // console.log(myUser);
   return (
     <div
       className={` flex gap-1 items-center  border  px-[.4rem] py-1 md:py-[0.3rem] md:px-[0.8rem]   ${
@@ -23,7 +20,7 @@ const LoginButton = () => {
         />
       </span>
       <button
-        onClick={loginWithRedirect}
+        onClick={signInWithGoogle}
         className={`${
           isDarkTheme ? "text-blue-600 " : "text-sky-500 "
         } font-medium text-xs sm:text-[14px] tracking-tighter`}

@@ -1,16 +1,18 @@
 import { useContext, useState } from "react";
 import { VscSend } from "react-icons/vsc";
 import { addMessage } from "../utils/chatSlice";
-import { useDispatch } from "react-redux";
-import { useUserContext } from "../context/user_context";
+import { useDispatch, useSelector } from "react-redux";
 import ThemeContext from "../context/theme_context";
+import { BiSolidUserCircle } from "react-icons/bi";
 
 const Chat = () => {
   const { isDarkTheme } = useContext(ThemeContext);
-  const { myUser } = useUserContext();
   const [liveMessage, setLiveMessage] = useState("");
 
   const dispatch = useDispatch();
+
+  const user = useSelector((store) => store.user?.user);
+  const isUserEmpty = !user || (Array.isArray(user) && user.length === 0);
 
   return (
     <form
@@ -19,7 +21,7 @@ const Chat = () => {
         e.preventDefault();
         dispatch(
           addMessage({
-            name: myUser?.nickname || myUser?.given_name,
+            name: user?.name,
             message: liveMessage,
           })
         );
@@ -28,10 +30,12 @@ const Chat = () => {
     >
       <div className="flex flex-col  gap-2 ml-3">
         <div className="flex items-center  gap-2">
-          {myUser && (
+          {isUserEmpty ? (
+            <BiSolidUserCircle className="text-3xl" />
+          ) : (
             <img
               className="w-8 h-8 rounded-full"
-              src={myUser?.picture}
+              src={user?.profilePhoto}
               alt="avatar"
             />
           )}
@@ -40,7 +44,7 @@ const Chat = () => {
               isDarkTheme ? "text-neutral-500" : "text-neutral-200"
             }  font-medium`}
           >
-            {myUser?.nickname || myUser?.given_name}
+            {user?.name}
           </p>
         </div>
 

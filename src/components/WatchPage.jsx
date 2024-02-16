@@ -14,11 +14,14 @@ import { LiaDownloadSolid } from "react-icons/lia";
 import { RxDotsHorizontal } from "react-icons/rx";
 
 import ThemeContext from "../context/theme_context";
+import useSignInWithGoogle from "../hooks/useSignInWithGoogle";
 
 const WatchPage = () => {
   const { isDarkTheme } = useContext(ThemeContext);
   const [searchParams] = useSearchParams();
   const [video, setVideo] = useState([]);
+  const [expanded, setExpanded] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const dispatch = useDispatch();
   useEffect(() => {
@@ -30,12 +33,7 @@ const WatchPage = () => {
     const response = await fetch(YOUTUBE_VIDEO_API + searchParams.get("v"));
     const data = await response.json();
     setVideo(data?.items);
-    // console.log(data.items);
   };
-
-  const [expanded, setExpanded] = useState(false);
-
-  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   useLayoutEffect(() => {
     const handleResize = () => {
@@ -51,6 +49,12 @@ const WatchPage = () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
+
+  const signInWithGoogle = useSignInWithGoogle();
+
+  const handleSignIn = async () => {
+    signInWithGoogle();
+  };
 
   return (
     <section
@@ -75,7 +79,7 @@ const WatchPage = () => {
               ></iframe>
 
               <div className=" lg:hidden mb-6 ">
-                <LiveChat />
+                <LiveChat signInWithGoogle={handleSignIn} />
               </div>
               <div className="flex flex-col gap-4 w-full lg:w-[600px] xl:w-[830px] ">
                 <h2
@@ -242,12 +246,12 @@ const WatchPage = () => {
             </div>
 
             <div className="hidden lg:block col-span-6 ">
-              <LiveChat />
+              <LiveChat signInWithGoogle={handleSignIn} />
             </div>
           </div>
 
           <div className="w-full lg:w-[600px]  xl:w-[830px]  ">
-            <CommentsContainer />
+            <CommentsContainer signInWithGoogle={handleSignIn} />
           </div>
         </div>
       </div>

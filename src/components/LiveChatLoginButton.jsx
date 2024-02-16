@@ -1,11 +1,8 @@
-import { useUserContext } from "../context/user_context";
-
-const LiveChatLoginButton = () => {
-  const { loginWithRedirect } = useUserContext();
+const LiveChatLoginButton = ({ signInWithGoogle }) => {
   return (
     <div className={` flex flex-col items-center gap-2 py-3 w-9/12 mx-auto  `}>
       <button
-        onClick={loginWithRedirect}
+        onClick={signInWithGoogle}
         className="block rounded-full   w-9/12 mx-auto  bg-neutral-800 cursor-pointer p-[.4rem] text-sm font-medium"
       >
         Sign in to chat

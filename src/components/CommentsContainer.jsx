@@ -1,17 +1,17 @@
 import { useContext, useState } from "react";
 
 import { BiSolidUserCircle } from "react-icons/bi";
-import { useUserContext } from "../context/user_context";
+
 import { commentsData } from "../utils/helper";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addComment } from "../utils/commentSlice";
 import NestedComments from "./NestedComments";
 import ThemeContext from "../context/theme_context";
 import { v4 as uuidv4 } from "uuid";
 
-const CommentsContainer = () => {
+const CommentsContainer = ({ signInWithGoogle }) => {
   const { isDarkTheme } = useContext(ThemeContext);
-  const { myUser, loginWithRedirect } = useUserContext();
+  const user = useSelector((store) => store.user?.user);
   const dispatch = useDispatch();
 
   const [commentInput, setCommentInput] = useState("");
@@ -22,7 +22,7 @@ const CommentsContainer = () => {
     dispatch(
       addComment({
         id: uuidv4(),
-        name: myUser?.nickname || myUser?.given_name,
+        name: user?.name,
         text: commentInput,
         replies: [],
       })
@@ -31,9 +31,10 @@ const CommentsContainer = () => {
     setShow(false);
   };
 
+  const isUserEmpty = !user || (Array.isArray(user) && user.length === 0);
   const gotoLoginPage = () => {
-    if (!myUser) {
-      loginWithRedirect();
+    if (isUserEmpty) {
+      signInWithGoogle();
     }
   };
 
@@ -49,12 +50,12 @@ const CommentsContainer = () => {
 
       <div className="flex flex-col gap-2 mb-6">
         <div className="flex items-center gap-2">
-          {!myUser ? (
+          {isUserEmpty ? (
             <BiSolidUserCircle className="text-4xl" />
           ) : (
             <img
               className="w-8 h-8 rounded-full"
-              src={myUser?.picture}
+              src={user?.profilePhoto}
               alt="avatar"
             />
           )}

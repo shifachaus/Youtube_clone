@@ -1,13 +1,17 @@
-import { tab1, tab2, tab3, tab4, tab5 } from "../utils/helper";
-import LoginButton from "./LoginButton";
 import { useContext } from "react";
+import { useSelector } from "react-redux";
+import { tab1, tab2, tab3, tab4, tab5 } from "../utils/helper";
 import ThemeContext from "../context/theme_context";
-import { useUserContext } from "../context/user_context";
+import LoginButton from "./LoginButton";
 import Tab from "./Tab";
 
 const SidebarTabs = () => {
   const { isDarkTheme } = useContext(ThemeContext);
-  const { myUser } = useUserContext();
+
+  const user = useSelector((store) => store.user.user);
+
+  const isUserEmpty = !user || (Array.isArray(user) && user.length === 0);
+
   return (
     <div
       className="flex flex-col gap-2 py-1   px-2 hover:h-screen  overflow-y-auto overflow-x-hidden"
@@ -21,7 +25,7 @@ const SidebarTabs = () => {
       <Tab tabs={tab1} />
       <Tab tabs={tab2} />
 
-      {!myUser && (
+      {isUserEmpty && (
         <ul
           className={`border-b flex flex-col   py-2  px-5    ${
             !isDarkTheme ? "border-neutral-600 " : "border-neutral-601  "
