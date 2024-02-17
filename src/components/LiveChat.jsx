@@ -32,7 +32,6 @@ const LiveChat = ({ signInWithGoogle }) => {
   }, []);
 
   const [showChat, setShowChat] = useState(true);
-
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
