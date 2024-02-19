@@ -8,7 +8,10 @@ export const YOUTUBE_VIDEOS_API =
 
 export const YOUTUBE_VIDEO_API = `https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&key=${GOOGLE_API_KEY}&id=`;
 
-export const YOUTUBE_SEARCH_API =
-  "https://corsproxy.io/?https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
+// export const YOUTUBE_SEARCH_API =
+//   "https://suggestqueries.google.com/complete/search?client=firefox&ds=yt&q=";
 
 export const YOUTUBE_SEARCH_RESULT_API = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&key=${GOOGLE_API_KEY}&q=`;
+
+export const YOUTUBE_SEARCH_API =
+  import.meta.env.VITE_SEARCH_API + "/api/youtube-search?q=";

@@ -1,6 +1,11 @@
 import { formatNumber, formatDateAsRelative } from "../utils/helper";
 import { BiSolidUserCircle } from "react-icons/bi";
-import { AiOutlineLike, AiOutlineDislike } from "react-icons/ai";
+import {
+  AiOutlineLike,
+  AiOutlineDislike,
+  AiFillLike,
+  AiFillDislike,
+} from "react-icons/ai";
 import { PiShareFatThin } from "react-icons/pi";
 import { LiaDownloadSolid } from "react-icons/lia";
 import { RxDotsHorizontal } from "react-icons/rx";
@@ -11,6 +16,24 @@ import { useContext, useState } from "react";
 const VideoInfo = ({ video, isSmallScreen }) => {
   const { isDarkTheme } = useContext(ThemeContext);
   const [expanded, setExpanded] = useState(false);
+
+  const [like, setLike] = useState(false);
+  const [dislike, setDisike] = useState(false);
+
+  const handleDislikes = () => {
+    if (like) {
+      setLike(false);
+    }
+    setDisike(!dislike);
+  };
+
+  const handleLikes = () => {
+    if (dislike) {
+      setDisike(false);
+    }
+
+    setLike(!like);
+  };
 
   return (
     <div className="flex flex-col gap-4 w-full lg:w-[600px] xl:w-[830px] ">
@@ -69,6 +92,7 @@ const VideoInfo = ({ video, isSmallScreen }) => {
               }`}
             >
               <button
+                onClick={handleLikes}
                 className={` flex items-center gap-2 border-r    pl-1 pr-2 py-1 rounded-l-full  text-neutral-200  font-medium text-sm  ${
                   isDarkTheme
                     ? "bg-neutral-100 text-neutral-900  border-neutral-200 "
@@ -76,7 +100,11 @@ const VideoInfo = ({ video, isSmallScreen }) => {
                 }`}
               >
                 <span>{formatNumber(+video[0]?.statistics?.likeCount)}</span>
-                <AiOutlineLike className="text-xl " />
+                {like ? (
+                  <AiFillLike className="text-xl " />
+                ) : (
+                  <AiOutlineLike className="text-xl " />
+                )}
               </button>
             </div>
 
@@ -88,13 +116,18 @@ const VideoInfo = ({ video, isSmallScreen }) => {
               }`}
             >
               <button
+                onClick={handleDislikes}
                 className={` pr-2 pl-1 rounded-r-full font-medium text-sm ${
                   isDarkTheme
                     ? "bg-neutral-100 text-neutral-900 "
                     : "bg-zinc-800 text-neutral-300  "
                 }`}
               >
-                <AiOutlineDislike className="text-xl " />
+                {dislike ? (
+                  <AiFillDislike className="text-xl" />
+                ) : (
+                  <AiOutlineDislike className="text-xl" />
+                )}
               </button>
             </div>
           </div>
@@ -131,6 +164,7 @@ const VideoInfo = ({ video, isSmallScreen }) => {
         </div>
       </div>
 
+      {/* Description */}
       <div
         className={`  px-4 py-2 rounded-xl font-medium text-sm ${
           !isDarkTheme

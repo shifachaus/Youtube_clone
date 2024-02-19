@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { YOUTUBE_SEARCH_RESULT_API } from "../utils/constants";
 import SearchResults from "./SearchResults";
-import { fetchFromAPI } from "../utils/fetchFromApi";
+import { fetchDataFromApi } from "../utils/fetchDataFromApi";
 import { useSelector } from "react-redux";
 
 const SearchResultContainer = () => {
@@ -10,7 +10,7 @@ const SearchResultContainer = () => {
   const [results, setResult] = useState([]);
 
   useEffect(() => {
-    fetchFromAPI(
+    fetchDataFromApi(
       `search?part=snippet&q=${searchParams.get("search_query")}`
     ).then((data) => setResult(data?.items));
     getSearchResults();
